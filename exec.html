@@ -777,6 +777,88 @@
     /* ============================================================ */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ============================================================ */
+    /* RESPONSIVE — TABLET (≤900px) */
+    /* ============================================================ */
+    @media (max-width: 900px) {
+      .exec-hero { padding: 72px 0 56px; }
+      .exec-hero-title { font-size: 36px; }
+      .exec-hero-stats { grid-template-columns: repeat(3, 1fr); }
+      .overview-grid { grid-template-columns: 1fr; gap: 20px; }
+      .models-grid { grid-template-columns: repeat(2, 1fr); }
+      .dept-grid { grid-template-columns: repeat(2, 1fr); }
+      .phases-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ============================================================ */
+    /* RESPONSIVE — MOBILE (≤600px) */
+    /* ============================================================ */
+    @media (max-width: 600px) {
+      /* Hero */
+      .exec-hero { padding: 48px 0 36px; }
+      .exec-hero-title { font-size: 26px; }
+      .exec-hero-subtitle { font-size: 15px; }
+      .exec-hero-description { font-size: 14px; margin-bottom: 24px; }
+      .exec-hero-stats {
+        grid-template-columns: 1fr 1fr;
+        margin-top: 28px;
+      }
+      .exec-stat-card { padding: 16px 18px; }
+      .exec-stat-number { font-size: 32px; }
+      .exec-stat-label { font-size: 12px; }
+
+      /* Header nav scroll */
+      .header-nav {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .header-nav::-webkit-scrollbar { display: none; }
+      .header-back { display: none; }
+
+      /* Sections */
+      .section { padding: 48px 0; }
+      .section-title { font-size: 24px; }
+      .section-description { font-size: 15px; }
+
+      /* Overview */
+      .overview-grid { grid-template-columns: 1fr; }
+      .insight-card { padding: 22px; }
+      .task-types-grid { grid-template-columns: 1fr 1fr; }
+
+      /* Models */
+      .models-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .models-grid--small { grid-template-columns: 1fr; }
+      .model-card { padding: 14px 16px; }
+      .model-card-score { font-size: 24px; }
+
+      /* Leaders table */
+      .leaders-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .leaders-table { font-size: 13px; }
+      .leaders-table th,
+      .leaders-table td { padding: 10px 12px; }
+
+      /* Filter */
+      .filter-section { padding: 14px 16px; }
+      .dept-stats-row { gap: 8px; }
+      .dept-stat { padding: 12px 14px; }
+      .dept-stat-num { font-size: 20px; }
+
+      /* Dept cards */
+      .dept-grid { grid-template-columns: 1fr; }
+      .dept-card { padding: 18px; }
+      .dept-name-ru { font-size: 14px; padding-right: 50px; }
+      .dept-model-score { font-size: 20px; }
+
+      /* Plan */
+      .phases-grid { grid-template-columns: 1fr; }
+      .phase-card { padding: 22px; }
+      .phase-number { font-size: 40px; }
+
+      /* Footer */
+      .exec-footer-inner { flex-direction: column; gap: 10px; }
+    }
   </style>
   <script src="exec.js" defer></script>
 </head>
