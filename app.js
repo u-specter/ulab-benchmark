@@ -1,22 +1,22 @@
 /* ============================================================ */
-/* DATA — ULAB Benchmark · 1 416 questions · March 2026         */
+/* DATA — ULAB Benchmark · 1,387 questions · March 2026         */
 /* ============================================================ */
 const ULAB_RESULTS = [
-  { id: 'kimi-k2p5',       name: 'Kimi K2.5',          type: 'opensource',  overall: 70.2, partial: false, answered: 1416, total: 1416, RC: 96.7, GC: 77.5, WS: 77.0, CL: 62.1, RI: 89.5, ED: 51.7 },
-  { id: 'mistral-large',   name: 'Mistral Large 2512',  type: 'commercial',  overall: 69.3, partial: false, answered: 1416, total: 1416, RC: 96.1, GC: 73.5, WS: 77.6, CL: 61.2, RI: 82.6, ED: 56.2 },
-  { id: 'llama4-maverick', name: 'Llama 4 Maverick',    type: 'opensource',  overall: 68.2, partial: false, answered: 1416, total: 1416, RC: 96.1, GC: 69.0, WS: 73.0, CL: 56.3, RI: 89.5, ED: 50.2 },
-  { id: 'cogito-671b',     name: 'Cogito 671B',         type: 'opensource',  overall: 68.1, partial: false, answered: 1416, total: 1416, RC: 96.7, GC: 76.5, WS: 78.1, CL: 59.2, RI: 80.0, ED: 55.2 },
-  { id: 'glm-5',           name: 'GLM-5',               type: 'opensource',  overall: 67.9, partial: false, answered: 1416, total: 1416, RC: 97.4, GC: 74.0, WS: 78.1, CL: 52.4, RI: 89.5, ED: 48.3 },
-  { id: 'llama4-scout',    name: 'Llama 4 Scout',       type: 'opensource',  overall: 67.4, partial: false, answered: 1416, total: 1416, RC: 97.4, GC: 69.0, WS: 73.0, CL: 61.2, RI: 80.0, ED: 57.7 },
-  { id: 'kimi-k2-0905',    name: 'Kimi K2 (0905)',      type: 'opensource',  overall: 67.0, partial: false, answered: 1416, total: 1416, RC: 98.0, GC: 72.5, WS: 78.6, CL: 61.2, RI: 82.1, ED: 54.2 },
-  { id: 'kimi-k2',         name: 'Kimi K2',             type: 'opensource',  overall: 66.8, partial: false, answered: 1416, total: 1416, RC: 97.4, GC: 72.5, WS: 75.0, CL: 53.4, RI: 82.1, ED: 60.7 },
-  { id: 'deepseek-v3.1',   name: 'DeepSeek V3.1',       type: 'opensource',  overall: 66.6, partial: false, answered: 1416, total: 1416, RC: 95.4, GC: 75.5, WS: 75.5, CL: 55.3, RI: 82.6, ED: 56.7 },
-  { id: 'llama3.3-70b',    name: 'Llama 3.3 70B',       type: 'opensource',  overall: 66.3, partial: false, answered: 1416, total: 1416, RC: 96.7, GC: 73.5, WS: 68.9, CL: 58.3, RI: 87.4, ED: 65.2 },
-  { id: 'gpt-oss-120b',    name: 'GPT-OSS 120B',        type: 'opensource',  overall: 66.2, partial: false, answered: 1416, total: 1416, RC: 96.1, GC: 68.0, WS: 73.5, CL: 57.3, RI: 86.8, ED: 52.7 },
-  { id: 'gemma-3-27b',     name: 'Gemma 3 27B',         type: 'opensource',  overall: 65.8, partial: false, answered: 1416, total: 1416, RC: 96.7, GC: 72.5, WS: 73.5, CL: 53.4, RI: 88.4, ED: 55.2 },
-  { id: 'qwen3-32b',       name: 'Qwen3 32B',           type: 'opensource',  overall: 64.1, partial: false, answered: 1416, total: 1416, RC: 96.7, GC: 79.5, WS: 78.1, CL: 53.4, RI: 85.8, ED: 41.3 },
-  { id: 'ministral-14b',   name: 'Ministral 14B',       type: 'opensource',  overall: 63.3, partial: false, answered: 1416, total: 1416, RC: 97.4, GC: 68.5, WS: 71.4, CL: 60.2, RI: 82.1, ED: 56.2 },
-  { id: 'llama3.1-8b',     name: 'Llama 3.1 8B',        type: 'opensource',  overall: 60.2, partial: false, answered: 1416, total: 1416, RC: 94.1, GC: 64.0, WS: 67.9, CL: 42.7, RI: 78.4, ED: 55.2 },
+  { id: 'kimi-k2p5', name: 'Kimi K2.5', type: 'opensource',  overall: 71.7, partial: false, answered: 1387, total: 1387, RC: 97.4, GC: 79.5, WS: 79.1, CL: 65.3, RI: 91.9, ED: 53.3 },
+  { id: 'mistral-large', name: 'Mistral Large 2512', type: 'commercial',  overall: 70.7, partial: false, answered: 1387, total: 1387, RC: 96.7, GC: 75.4, WS: 79.6, CL: 64.3, RI: 84.9, ED: 57.9 },
+  { id: 'llama4-maverick', name: 'Llama 4 Maverick', type: 'opensource',  overall: 69.6, partial: false, answered: 1387, total: 1387, RC: 96.7, GC: 70.8, WS: 74.9, CL: 59.2, RI: 91.9, ED: 51.8 },
+  { id: 'cogito-671b', name: 'Cogito 671B', type: 'opensource',  overall: 69.6, partial: false, answered: 1387, total: 1387, RC: 97.4, GC: 78.5, WS: 80.1, CL: 62.2, RI: 82.2, ED: 56.9 },
+  { id: 'glm-5', name: 'GLM-5', type: 'opensource',  overall: 69.3, partial: false, answered: 1387, total: 1387, RC: 98.0, GC: 75.9, WS: 80.1, CL: 55.1, RI: 91.9, ED: 49.7 },
+  { id: 'llama4-scout', name: 'Llama 4 Scout', type: 'opensource',  overall: 68.8, partial: false, answered: 1387, total: 1387, RC: 98.0, GC: 70.8, WS: 74.9, CL: 64.3, RI: 82.2, ED: 59.5 },
+  { id: 'kimi-k2-0905', name: 'Kimi K2 (0905)', type: 'opensource',  overall: 68.4, partial: false, answered: 1387, total: 1387, RC: 98.7, GC: 74.4, WS: 80.6, CL: 64.3, RI: 84.3, ED: 55.9 },
+  { id: 'kimi-k2', name: 'Kimi K2', type: 'opensource',  overall: 68.2, partial: false, answered: 1387, total: 1387, RC: 98.0, GC: 74.4, WS: 77.0, CL: 56.1, RI: 84.3, ED: 62.6 },
+  { id: 'deepseek-v3.1', name: 'DeepSeek V3.1', type: 'opensource',  overall: 68.0, partial: false, answered: 1387, total: 1387, RC: 96.0, GC: 77.4, WS: 77.5, CL: 58.2, RI: 84.9, ED: 58.5 },
+  { id: 'llama3.3-70b', name: 'Llama 3.3 70B', type: 'opensource',  overall: 67.7, partial: false, answered: 1387, total: 1387, RC: 97.4, GC: 75.4, WS: 70.7, CL: 61.2, RI: 89.7, ED: 67.2 },
+  { id: 'gpt-oss-120b', name: 'GPT-OSS 120B', type: 'opensource',  overall: 67.6, partial: false, answered: 1387, total: 1387, RC: 96.7, GC: 69.7, WS: 75.4, CL: 60.2, RI: 89.2, ED: 54.4 },
+  { id: 'gemma-3-27b', name: 'Gemma 3 27B', type: 'opensource',  overall: 67.2, partial: false, answered: 1387, total: 1387, RC: 97.4, GC: 74.4, WS: 75.4, CL: 56.1, RI: 90.8, ED: 56.9 },
+  { id: 'qwen3-32b', name: 'Qwen3 32B', type: 'opensource',  overall: 65.4, partial: false, answered: 1387, total: 1387, RC: 97.4, GC: 81.5, WS: 80.1, CL: 56.1, RI: 88.1, ED: 42.6 },
+  { id: 'ministral-14b', name: 'Ministral 14B', type: 'opensource',  overall: 64.7, partial: false, answered: 1387, total: 1387, RC: 98.0, GC: 70.3, WS: 73.3, CL: 63.3, RI: 84.3, ED: 57.9 },
+  { id: 'llama3.1-8b', name: 'Llama 3.1 8B', type: 'opensource',  overall: 61.4, partial: false, answered: 1387, total: 1387, RC: 94.7, GC: 65.6, WS: 69.6, CL: 44.9, RI: 80.5, ED: 56.9 },
 ];
 
 /* ============================================================ */
