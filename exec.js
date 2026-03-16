@@ -8,26 +8,26 @@
 /* ============================================================ */
 const MODEL_TIERS = {
   A: [
-    { name: 'Kimi K2.5',          score: 71.7, provider: 'Moonshot AI',  strength: 'Лучший RI (89%) и CL (62%). Универсальный лидер по всем задачам.' },
-    { name: 'Llama 4 Maverick',   score: 69.6, provider: 'Meta',         strength: 'RI 89%, открытая архитектура — возможен self-hosted в банке.' },
-    { name: 'Mistral Large 2512', score: 70.7, provider: 'Mistral AI',   strength: 'Лидер ED (56%) и WS (78%). Лучший для письменного контента. GDPR.' },
-    { name: 'Cogito 671B',        score: 69.6, provider: 'Cogito',       strength: 'Высокий RC (97%). Надёжный для документооборота.' },
-    { name: 'GLM-5',              score: 69.3, provider: 'Zhipu AI',     strength: 'RI 89%. Силён в многоканальной коммуникации.' },
-    { name: 'Llama 4 Scout',      score: 68.8, provider: 'Meta',         strength: 'Сбалансированный. Открытая архитектура. CL 61%.' },
-    { name: 'Kimi K2 (0905)',     score: 68.4, provider: 'Moonshot AI',  strength: 'Лучший WS (79%) и RC (98%). Точность в юридических текстах.' },
-    { name: 'Kimi K2',            score: 68.2, provider: 'Moonshot AI',  strength: 'Лидер ED (61%). Обнаружение ошибок в документах.' },
-    { name: 'DeepSeek V3.1',      score: 68.0, provider: 'DeepSeek',     strength: 'Лучший ED (57%). Хорош для проверки текстов и compliance.' },
-    { name: 'Llama 3.3 70B',      score: 67.7, provider: 'Meta',         strength: 'Абсолютный лидер ED (65%). Поиск ошибок в документах.' },
-    { name: 'Gemma 3 27B',        score: 67.2, provider: 'Google',       strength: 'Высокий RI (88%). Хорош для классификации регистра.' },
-    { name: 'Qwen3 32B',          score: 65.4, provider: 'Alibaba',      strength: 'Лучший GC (80%). Грамматическая корректность текстов.' },
+    { name: 'Kimi K2.5',          score: 72.3, provider: 'Moonshot AI',  strength: 'Лучший RI (89%) и CL (62%). Универсальный лидер по всем задачам.' },
+    { name: 'Llama 4 Maverick',   score: 70.1, provider: 'Meta',         strength: 'RI 89%, открытая архитектура — возможен self-hosted в банке.' },
+    { name: 'Mistral Large 2512', score: 71.3, provider: 'Mistral AI',   strength: 'Лидер ED (56%) и WS (78%). Лучший для письменного контента. GDPR.' },
+    { name: 'Cogito 671B',        score: 70.2, provider: 'Cogito',       strength: 'Высокий RC (97%). Надёжный для документооборота.' },
+    { name: 'GLM-5',              score: 69.8, provider: 'Zhipu AI',     strength: 'RI 89%. Силён в многоканальной коммуникации.' },
+    { name: 'Llama 4 Scout',      score: 69.4, provider: 'Meta',         strength: 'Сбалансированный. Открытая архитектура. CL 61%.' },
+    { name: 'Kimi K2 (0905)',     score: 69.0, provider: 'Moonshot AI',  strength: 'Лучший WS (79%) и RC (98%). Точность в юридических текстах.' },
+    { name: 'Kimi K2',            score: 68.7, provider: 'Moonshot AI',  strength: 'Лидер ED (61%). Обнаружение ошибок в документах.' },
+    { name: 'DeepSeek V3.1',      score: 68.6, provider: 'DeepSeek',     strength: 'Лучший ED (57%). Хорош для проверки текстов и compliance.' },
+    { name: 'Llama 3.3 70B',      score: 68.3, provider: 'Meta',         strength: 'Абсолютный лидер ED (65%). Поиск ошибок в документах.' },
+    { name: 'Gemma 3 27B',        score: 67.8, provider: 'Google',       strength: 'Высокий RI (88%). Хорош для классификации регистра.' },
+    { name: 'Qwen3 32B',          score: 65.7, provider: 'Alibaba',      strength: 'Лучший GC (80%). Грамматическая корректность текстов.' },
   ],
   B: [
-    { name: 'Ministral 14B',      score: 64.7, provider: 'Mistral AI',   strength: 'Компактная модель. Подходит для некритичных задач.' },
-    { name: 'Llama 3.1 8B',       score: 61.4, provider: 'Meta',         strength: 'Малый размер. Быстрый inference при ограниченных ресурсах.' },
+    { name: 'Ministral 14B',      score: 65.1, provider: 'Mistral AI',   strength: 'Компактная модель. Подходит для некритичных задач.' },
+    { name: 'Llama 3.1 8B',       score: 61.7, provider: 'Meta',         strength: 'Малый размер. Быстрый inference при ограниченных ресурсах.' },
   ],
   C: [
-    { name: 'Allam 2 7B',         score: 40.4, provider: 'SDAIA',        strength: 'Частичные данные (458/1387). Заточен под арабский язык.', partial: true },
-    { name: 'Nemotron 120B',      score: 29.0, provider: 'NVIDIA',       strength: 'Частичные данные (169/1387). Тестирование прервано.', partial: true },
+    { name: 'Allam 2 7B',         score: 40.6, provider: 'SDAIA',        strength: 'Частичные данные (456/1377). Заточен под арабский язык.', partial: true },
+    { name: 'Nemotron 120B',      score: 29.0, provider: 'NVIDIA',       strength: 'Частичные данные (169/1377). Тестирование прервано.', partial: true },
   ],
 };
 
