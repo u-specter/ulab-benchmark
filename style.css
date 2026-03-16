@@ -1315,6 +1315,174 @@ body {
 .reveal:nth-child(4) { transition-delay: 0.3s; }
 
 /* ============================================================ */
+/* RESPONSIVE — TABLET (≤900px) */
+/* ============================================================ */
+@media (max-width: 900px) {
+  html { font-size: 17px; }
+
+  .container,
+  .header-inner { padding: 0 24px; }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .hero-title { font-size: 38px; }
+
+  .method-grid { grid-template-columns: 1fr 1fr; }
+
+  .uzlib-grid {
+    grid-template-columns: 1fr;
+  }
+  .uzlib-info-card { position: static; }
+
+  .details-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .conclusions-grid { grid-template-columns: 1fr 1fr; }
+
+  .dg-grid { grid-template-columns: 1fr 1fr !important; }
+  .imp-grid { grid-template-columns: 1fr 1fr !important; }
+}
+
+/* ============================================================ */
+/* RESPONSIVE — MOBILE (≤600px) */
+/* ============================================================ */
+@media (max-width: 600px) {
+  html { font-size: 15px; }
+
+  /* ── Header ── */
+  .header { height: auto; padding: 10px 0; }
+  .header-inner {
+    padding: 0 16px;
+    flex-wrap: wrap;
+    gap: 10px;
+    height: auto;
+  }
+  .header-nav {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+    gap: 2px;
+  }
+  .header-nav::-webkit-scrollbar { display: none; }
+  .nav-link { font-size: 13px; padding: 5px 10px; white-space: nowrap; }
+  .header-badge { font-size: 12px; padding: 3px 10px; }
+
+  /* ── Container ── */
+  .container { padding: 0 16px; }
+
+  /* ── Hero ── */
+  .hero { min-height: auto; padding: 48px 0 40px; }
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .hero-title { font-size: 28px; letter-spacing: -0.02em; }
+  .hero-subtitle { font-size: 16px; }
+  .hero-description { font-size: 15px; margin-bottom: 24px; }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    opacity: 1;
+    animation: none;
+  }
+  .stat-card { padding: 16px 18px; }
+  .stat-number { font-size: 32px; }
+  .stat-label { font-size: 14px; }
+  .stat-sub { font-size: 12px; }
+  .hero-scroll-hint { display: none; }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    font-size: 15px;
+    padding: 12px 20px;
+    width: 100%;
+    justify-content: center;
+  }
+  .dept-cta > div[style] {
+    flex-direction: column !important;
+  }
+
+  /* ── Sections ── */
+  .section { padding: 56px 0; }
+  .section-header { margin-bottom: 32px; }
+  .section-title { font-size: 26px; }
+  .section-description { font-size: 16px; }
+
+  /* ── Method cards ── */
+  .method-grid { grid-template-columns: 1fr; }
+  .method-card { padding: 24px; }
+
+  /* ── Tab bar ── */
+  .tab-bar {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-btn { font-size: 14px; padding: 7px 14px; }
+
+  /* ── Chart ── */
+  .chart-wrapper { padding: 16px; }
+
+  /* ── Ranking table ── */
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .ranking-table { font-size: 14px; }
+  .ranking-table th,
+  .ranking-table td { padding: 10px 12px; }
+
+  /* ── Heatmap ── */
+  .details-layout { grid-template-columns: 1fr; }
+  .heatmap-wrap { padding: 16px; overflow-x: auto; }
+  .heatmap-table { font-size: 12px; }
+  .heatmap-table thead th,
+  .heatmap-table tbody td { padding: 6px 7px; }
+  .leaders-cards { gap: 10px; }
+  .leader-score { font-size: 24px; }
+
+  /* ── uzlib ── */
+  .uzlib-grid { grid-template-columns: 1fr; }
+  .uzlib-info-card { position: static; }
+
+  /* ── Dept groups ── */
+  .dg-grid { grid-template-columns: 1fr !important; }
+  .dg-card { padding: 20px !important; }
+
+  /* ── Improve section ── */
+  .imp-grid { grid-template-columns: 1fr !important; }
+  .imp-card { padding: 20px !important; }
+
+  /* ── Conclusions ── */
+  .conclusions-grid { grid-template-columns: 1fr; }
+  .next-steps { padding: 24px 20px; }
+  .step-item { grid-template-columns: 48px 1fr; gap: 14px; }
+  .step-number { font-size: 28px; }
+
+  /* ── Footer ── */
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .footer-stats { flex-wrap: wrap; }
+}
+
+/* ============================================================ */
 /* PRINT */
 /* ============================================================ */
 @media print {
