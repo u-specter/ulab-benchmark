@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ULAB Benchmark — Узбекский язык в AI · Март 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <style>
+    /* ── Dataset Section ── */
+    .dataset-split-bar {
+      margin-bottom: 40px;
+      background: var(--border-light, #F3F4F6);
+      border-radius: 12px;
+      overflow: hidden;
+      height: 52px;
+      display: flex;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .dataset-split-seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      transition: flex 0.4s ease;
+    }
+    .dataset-split-seg--ulab {
+      background: linear-gradient(90deg, #1D4ED8, #3B82F6);
+      color: white;
+      flex: 73.6;
+      border-radius: 12px 0 0 12px;
+    }
+    .dataset-split-seg--uzlib {
+      background: linear-gradient(90deg, #7C3AED, #A855F7);
+      color: white;
+      flex: 26.4;
+      border-radius: 0 12px 12px 0;
+    }
+
+    /* Main dataset two-col layout */
+    .dataset-main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 900px) { .dataset-main-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+    @media (max-width: 600px) { .dataset-main-grid { grid-template-columns: 1fr !important; } }
+
+    .dataset-block {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: white;
+    }
+    .dataset-block-header {
+      padding: 24px 24px 16px;
+      border-bottom: 1px solid var(--border-light, #F3F4F6);
+    }
+    .dataset-block-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 6px;
+      padding: 3px 10px;
+      margin-bottom: 10px;
+    }
+    .dataset-block-badge--blue { background: #DBEAFE; color: #1D4ED8; }
+    .dataset-block-badge--purple { background: #EDE9FE; color: #7C3AED; }
+    .dataset-block-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+    .dataset-block-count {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 6px;
+    }
+    .dataset-block-count--blue { color: #1D4ED8; }
+    .dataset-block-count--purple { color: #7C3AED; }
+    .dataset-block-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Task types in ULAB block */
+    .dataset-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted, #9CA3AF);
+      padding: 12px 24px 8px;
+    }
+    .task-types-list {
+      padding: 0 16px 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .task-type-item {
+      background: var(--bg-gray, #F9FAFB);
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .task-type-code {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      background: #DBEAFE;
+      color: #1D4ED8;
+      border-radius: 5px;
+      padding: 2px 6px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .task-type-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      display: block;
+      line-height: 1.3;
+    }
+    .task-type-sub {
+      font-size: 11px;
+      color: var(--text-muted, #9CA3AF);
+      line-height: 1.4;
+    }
+
+    /* Registers trio */
+    .registers-trio {
+      padding: 0 16px 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .register-pill {
+      text-align: center;
+      padding: 8px 4px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .register-pill--formal { background: #DBEAFE; color: #1E40AF; }
+    .register-pill--informal { background: #D1FAE5; color: #065F46; }
+    .register-pill--conv { background: #FEF3C7; color: #92400E; }
+    .register-pill-label { display: block; font-size: 10px; font-weight: 400; opacity: 0.8; margin-top: 2px; }
+
+    /* UzLiB task list */
+    .uzlib-task-list {
+      padding: 0 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .uzlib-task-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: var(--bg-gray, #F9FAFB);
+      border-radius: 8px;
+      font-size: 12px;
+    }
+    .uzlib-task-name { font-weight: 600; color: var(--text); }
+    .uzlib-task-count {
+      font-size: 12px;
+      font-weight: 700;
+      color: #7C3AED;
+      background: #EDE9FE;
+      padding: 2px 8px;
+      border-radius: 5px;
+    }
+    .uzlib-source-badge {
+      margin: 0 16px 16px;
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #15803D;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Why two datasets? */
+    .dataset-why {
+      background: linear-gradient(135deg, #F8FAFF, #F5F3FF);
+      border: 1px solid #E0E7FF;
+      border-radius: 16px;
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    @media (max-width: 700px) { .dataset-why { grid-template-columns: 1fr; gap: 12px; padding: 20px; } }
+    .dataset-why-icon {
+      width: 48px;
+      height: 48px;
+      background: white;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      flex-shrink: 0;
+      font-size: 22px;
+    }
+    .dataset-why-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .dataset-why-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* Department Summary Grid */
+    .dept-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .dept-summary-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .dept-summary-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+    .dept-summary-icon { font-size: 24px; margin-bottom: 8px; }
+    .dept-summary-task {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+    .dept-summary-score {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+    .dept-summary-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .dept-summary-leader {
+      font-size: 12px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .dept-summary-leader strong { color: #059669; }
+    .dept-summary-depts {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    /* ── Dept Groups ── */
+    .dg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 1000px) { .dg-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .dg-grid { grid-template-columns: 1fr; } }
+
+    .dg-card {
+      background: white;
+      border: 1.5px solid var(--dg-border, #E5E7EB);
+      border-radius: 16px;
+      padding: 0;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .dg-card:hover {
+      box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+      transform: translateY(-2px);
+    }
+    .dg-header {
+      background: var(--dg-bg, #F3F4F6);
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid var(--dg-border, #E5E7EB);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+    .dg-task-badge {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: var(--dg-color, #374151);
+      background: white;
+      border: 1.5px solid var(--dg-border, #E5E7EB);
+      border-radius: 6px;
+      padding: 3px 9px;
+      flex-shrink: 0;
+    }
+    .dg-task-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      flex: 1;
+    }
+    .dg-score {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--dg-color, #374151);
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+    .dg-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      padding: 14px 20px 0;
+      margin: 0;
+    }
+    .dg-why {
+      margin: 12px 20px 0;
+      background: var(--dg-bg, #F9FAFB);
+      border-radius: 8px;
+      padding: 9px 12px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      display: flex;
+      gap: 7px;
+      align-items: flex-start;
+    }
+    .dg-why-icon { flex-shrink: 0; font-size: 14px; margin-top: 0px; }
+    .dg-leader {
+      margin: 12px 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dg-leader-label {
+      font-size: 11px;
+      color: var(--text-muted, #9CA3AF);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .dg-leader-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--dg-color, #374151);
+      background: var(--dg-bg, #F3F4F6);
+      padding: 2px 8px;
+      border-radius: 5px;
+    }
+    .dg-depts-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted, #9CA3AF);
+      padding: 12px 20px 6px;
+    }
+    .dg-depts {
+      padding: 0 16px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .dg-dept-item {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text);
+      background: var(--bg-gray, #F9FAFB);
+      border: 1px solid var(--border-light, #F3F4F6);
+      border-radius: 6px;
+      padding: 4px 9px;
+      line-height: 1.3;
+    }
+
+    /* ── Improve Steps ── */
+    .imp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 1000px) { .imp-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .imp-grid { grid-template-columns: 1fr; } }
+
+    .imp-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 24px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .imp-card:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+    .imp-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .imp-num {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.35);
+    }
+    .imp-emoji { font-size: 20px; }
+    .imp-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: white;
+      flex: 1;
+      line-height: 1.3;
+    }
+    .imp-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65;
+      margin: 0 0 16px;
+    }
+    .imp-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .imp-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .imp-meta-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.35);
+      font-weight: 600;
+    }
+    .imp-meta-val {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+    }
+    .imp-effort {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 5px;
+      font-weight: 700;
+    }
+    .effort--low       { background: #D1FAE5; color: #065F46; }
+    .effort--medium    { background: #FEF3C7; color: #92400E; }
+    .effort--high      { background: #FEE2E2; color: #991B1B; }
+    .effort--very-high { background: #7F1D1D; color: #FCA5A5; }
+    .effort--process   { background: #EDE9FE; color: #5B21B6; }
+    .imp-gain {
+      font-size: 12px;
+      font-weight: 700;
+      color: #6EE7B7;
+    }
+    .imp-tasks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .imp-tasks-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+    }
+    .imp-task-badge {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.75);
+      border-radius: 4px;
+      padding: 2px 7px;
+    }
+    .imp-tools {
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      font-style: italic;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 12px;
+      line-height: 1.5;
+    }
+
+    /* Department CTA */
+    .dept-cta {
+      background: var(--dark);
+      border-radius: 16px;
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .dept-cta-text h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+    }
+    .dept-cta-text p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      max-width: 540px;
+    }
+    .dept-cta .btn-primary { flex-shrink: 0; white-space: nowrap; }
+    @media (max-width: 900px) {
+      .dept-summary-grid { grid-template-columns: repeat(2, 1fr); }
+      .dept-cta { flex-direction: column; align-items: flex-start; padding: 28px; }
+    }
+    @media (max-width: 600px) {
+      .dept-summary-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================ -->
+  <!-- HEADER -->
+  <!-- ============================================================ -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <svg class="header-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" style="color:var(--primary)">
+          <path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M20 10v11M8 10v11M16 10v11M12 10v11" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="header-title">ULAB Benchmark</span>
+      </div>
+      <nav class="header-nav">
+        <a href="#methodology" class="nav-link">Методология</a>
+        <a href="#dataset" class="nav-link">Датасет</a>
+        <a href="#ulab-ranking" class="nav-link">Рейтинг</a>
+        <a href="#details" class="nav-link">Детали</a>
+        <a href="#departments" class="nav-link">Департаменты</a>
+        <a href="#improve" class="nav-link">Улучшение</a>
+      </nav>
+      <div class="header-badge">Март 2026</div>
+    </div>
+  </header>
+
+  <!-- ============================================================ -->
+  <!-- HERO -->
+  <!-- ============================================================ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="container hero-inner">
+
+      <div class="hero-content">
+        <div class="hero-eyebrow">ULAB · Март 2026</div>
+        <h1 class="hero-title">
+          Как хорошо AI-модели<br />знают узбекский язык?
+        </h1>
+        <p class="hero-subtitle">
+          Первый банковский бенчмарк узбекского языка
+        </p>
+        <p class="hero-description">
+          17 ведущих AI-моделей, 1&nbsp;416 вопросов, 6 типов языковых задач, 3 речевых регистра. Ни одна модель не преодолела 75%. Результаты дают банку объективную основу для выбора модели, выявляют слабые места и показывают, как их устранить.
+        </p>
+        <a href="#ulab-ranking" class="btn-primary">
+          Смотреть рейтинг моделей
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <!-- Card 1: 17 models — animated counter -->
+        <div class="stat-card">
+          <div class="stat-number" data-target="17">0</div>
+          <div class="stat-label">моделей протестировано</div>
+          <div class="stat-sub">Первое сравнительное тестирование такого масштаба в Узбекистане</div>
+        </div>
+        <!-- Card 2: <75% — static text, no counter -->
+        <div class="stat-card">
+          <div class="stat-number stat-number--static">&lt;75%</div>
+          <div class="stat-label">максимальная точность</div>
+          <div class="stat-sub">Ни одна модель не достигла отметки 75% на узбекском языке</div>
+        </div>
+        <!-- Card 3: 1416 questions — animated counter -->
+        <div class="stat-card">
+          <div class="stat-number" data-target="1416">0</div>
+          <div class="stat-label">вопросов в тестовой выборке</div>
+          <div class="stat-sub">6 типов задач · 3 регистра речи</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Прокрутите вниз</span>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M10 4v12M4 10l6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- METHODOLOGY -->
+  <!-- ============================================================ -->
+  <section class="section section--light" id="methodology">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Что проверяет бенчмарк</div>
+        <h2 class="section-title">Структура оценки</h2>
+        <p class="section-description">
+          1&nbsp;416 вопросов охватывают шесть аспектов узбекского языка в трёх речевых регистрах — деловом, неформальном и разговорном
+        </p>
+      </div>
+
+      <div class="method-grid reveal">
+
+        <!-- Card 1: 6 task types -->
+        <div class="method-card">
+          <div class="method-card-header">
+            <div class="method-icon method-icon--blue">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="method-label">Языковые навыки</div>
+          </div>
+          <h3 class="method-title">6 типов задач</h3>
+          <p class="method-desc">
+            Каждый тип задач проверяет отдельный аспект знания языка: от понимания сложных документов до обнаружения тонких грамматических ошибок.
+          </p>
+          <div class="method-stat">
+            <span class="method-stat-number">6</span>
+            <span class="method-stat-label">видов языковых испытаний</span>
+          </div>
+          <div class="method-tags">
+            <span class="tag tag--blue">RC · Понимание текста</span>
+            <span class="tag tag--blue">GC · Грамматика</span>
+            <span class="tag tag--blue">WS · Словарь</span>
+            <span class="tag tag--blue">CL · Контекст</span>
+            <span class="tag tag--blue">RI · Регистр</span>
+            <span class="tag tag--blue">ED · Ошибки</span>
+          </div>
+          <div class="method-detail">
+            <span class="method-detail-icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 1v12M1 7h12" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </span>
+            + лингвистическая валидация: значение слов, заполнение пропусков, понимание в контексте
+          </div>
+        </div>
+
+        <!-- Card 2: 3 registers -->
+        <div class="method-card method-card--featured">
+          <div class="method-card-header">
+            <div class="method-icon method-icon--purple">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="method-label">Контексты общения</div>
+          </div>
+          <h3 class="method-title">3 регистра речи</h3>
+          <p class="method-desc">
+            Банковская AI-система должна одинаково хорошо работать в официальной документации, внутреннем общении и клиентских диалогах. Бенчмарк проверяет все три.
+          </p>
+          <div class="method-stat">
+            <span class="method-stat-number">3</span>
+            <span class="method-stat-label">речевых контекста</span>
+          </div>
+          <div class="method-tags">
+            <span class="tag tag--purple">Деловой / Банковский · 376 вопросов</span>
+            <span class="tag tag--purple">Неформальный · 337 вопросов</span>
+            <span class="tag tag--purple">Разговорный · 329 вопросов</span>
+          </div>
+          <div class="method-detail">
+            <span class="method-detail-icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 7l3.5 3.5L12 3" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Разработан совместно с лингвистами-экспертами, специализирующимися на узбекском языке
+          </div>
+        </div>
+
+        <!-- Scoring -->
+        <div class="method-card">
+          <div class="method-card-header">
+            <div class="method-icon method-icon--green">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="method-label">Метрика оценки</div>
+          </div>
+          <h3 class="method-title">Точность ответов</h3>
+          <p class="method-desc">
+            Доля правильных ответов из множественного выбора (MCQ). Прозрачная, воспроизводимая метрика — каждый вопрос имеет единственный верный ответ, проверка полностью автоматизирована.
+          </p>
+          <div class="accuracy-scale">
+            <div class="scale-track">
+              <div class="scale-segment scale-segment--weak">
+                <span>Слабый</span>
+              </div>
+              <div class="scale-segment scale-segment--good">
+                <span>Приемлемый</span>
+              </div>
+              <div class="scale-segment scale-segment--excellent">
+                <span>Отличный</span>
+              </div>
+            </div>
+            <div class="scale-labels">
+              <span>0%</span>
+              <span>55%</span>
+              <span>70%</span>
+              <span>100%</span>
+            </div>
+          </div>
+          <div class="method-detail">
+            <span class="method-detail-icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <circle cx="7" cy="7" r="6" stroke="var(--success)" stroke-width="1.5"/>
+                <path d="M4.5 7l2 2 3-3" stroke="var(--success)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Порог 65% — минимально приемлемый уровень для банковских задач
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- BENCHMARK STRUCTURE / DATASET -->
+  <!-- ============================================================ -->
+  <section class="section section--light" id="dataset">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Глубина охвата</div>
+        <h2 class="section-title">Что именно проверялось</h2>
+        <p class="section-description">
+          1&nbsp;416 вопросов · 6 типов языковых задач · 3 регистра речи · профессиональная лингвистическая валидация
+        </p>
+      </div>
+
+      <!-- 6 task type cards -->
+      <div class="dataset-main-grid reveal" style="grid-template-columns: repeat(3, 1fr);">
+
+        <div class="dataset-block">
+          <div class="dataset-block-header" style="border-bottom:none;padding-bottom:12px">
+            <div class="dataset-block-badge dataset-block-badge--blue">RC</div>
+            <div class="dataset-block-title" style="font-size:16px">Понимание текста</div>
+            <div class="dataset-block-count dataset-block-count--blue" style="font-size:22px">94–98%</div>
+            <p class="dataset-block-desc">Чтение и анализ документов, договоров, деловой переписки. Лучший результат среди всех задач.</p>
+          </div>
+          <div style="padding:0 16px 16px">
+            <div class="register-pill register-pill--formal" style="text-align:left;padding:6px 10px">152 вопроса · деловой, неформальный, разговорный</div>
+          </div>
+        </div>
+
+        <div class="dataset-block">
+          <div class="dataset-block-header" style="border-bottom:none;padding-bottom:12px">
+            <div class="dataset-block-badge dataset-block-badge--blue">GC</div>
+            <div class="dataset-block-title" style="font-size:16px">Грамматика</div>
+            <div class="dataset-block-count dataset-block-count--blue" style="font-size:22px">64–80%</div>
+            <p class="dataset-block-desc">Морфология, синтаксис, правильность форм — ключевое для составления официальных документов.</p>
+          </div>
+          <div style="padding:0 16px 16px">
+            <div class="register-pill register-pill--informal" style="text-align:left;padding:6px 10px">200 вопросов · деловой, неформальный, разговорный</div>
+          </div>
+        </div>
+
+        <div class="dataset-block">
+          <div class="dataset-block-header" style="border-bottom:none;padding-bottom:12px">
+            <div class="dataset-block-badge dataset-block-badge--blue">WS</div>
+            <div class="dataset-block-title" style="font-size:16px">Точность слов</div>
+            <div class="dataset-block-count dataset-block-count--blue" style="font-size:22px">68–79%</div>
+            <p class="dataset-block-desc">Банковская и юридическая лексика. Правильный выбор слова в профессиональном контексте.</p>
+          </div>
+          <div style="padding:0 16px 16px">
+            <div class="register-pill register-pill--informal" style="text-align:left;padding:6px 10px">196 вопросов · деловой, неформальный, разговорный</div>
+          </div>
+        </div>
+
+        <div class="dataset-block">
+          <div class="dataset-block-header" style="border-bottom:none;padding-bottom:12px">
+            <div class="dataset-block-badge dataset-block-badge--blue">CL</div>
+            <div class="dataset-block-title" style="font-size:16px">Контекст</div>
+            <div class="dataset-block-count dataset-block-count--blue" style="font-size:22px">43–62%</div>
+            <p class="dataset-block-desc">Заполнение пропусков по смыслу. Самая сложная задача — требует глубокого понимания контекста.</p>
+          </div>
+          <div style="padding:0 16px 16px">
+            <div class="register-pill register-pill--conv" style="text-align:left;padding:6px 10px">103 вопроса · деловой, неформальный, разговорный</div>
+          </div>
+        </div>
+
+        <div class="dataset-block">
+          <div class="dataset-block-header" style="border-bottom:none;padding-bottom:12px">
+            <div class="dataset-block-badge dataset-block-badge--blue">RI</div>
+            <div class="dataset-block-title" style="font-size:16px">Регистр речи</div>
+            <div class="dataset-block-count dataset-block-count--blue" style="font-size:22px">78–90%</div>
+            <p class="dataset-block-desc">Различение официального, неформального и разговорного стилей — критично для клиентских коммуникаций.</p>
+          </div>
+          <div style="padding:0 16px 16px">
+            <div class="register-pill register-pill--formal" style="text-align:left;padding:6px 10px">190 вопросов · деловой, неформальный, разговорный</div>
+          </div>
+        </div>
+
+        <div class="dataset-block">
+          <div class="dataset-block-header" style="border-bottom:none;padding-bottom:12px">
+            <div class="dataset-block-badge dataset-block-badge--blue">ED</div>
+            <div class="dataset-block-title" style="font-size:16px">Обнаружение ошибок</div>
+            <div class="dataset-block-count dataset-block-count--blue" style="font-size:22px">41–65%</div>
+            <p class="dataset-block-desc">Поиск грамматических и смысловых ошибок в тексте. Высокая ценность для верификации документов.</p>
+          </div>
+          <div style="padding:0 16px 16px">
+            <div class="register-pill register-pill--conv" style="text-align:left;padding:6px 10px">201 вопрос · деловой, неформальный, разговорный</div>
+          </div>
+        </div>
+
+      </div><!-- /task-type grid -->
+
+      <!-- Linguistic validation note -->
+      <div class="dataset-why reveal">
+        <div class="dataset-why-icon">📚</div>
+        <div>
+          <div class="dataset-why-title">Лингвистическая валидация — 374 вопроса</div>
+          <p class="dataset-why-text">
+            Бенчмарк включает блок вопросов, составленных профессиональными лингвистами-экспертами по узбекскому языку, — значение слов, смысл в контексте, заполнение пропусков. Этот блок обеспечивает <strong>независимую верификацию результатов</strong> и подтверждает, что высокие показатели моделей отражают реальное знание языка.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ULAB MCQ RANKING — Leaderboard -->
+  <!-- ============================================================ -->
+  <section class="section section--gray" id="ulab-ranking">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Основной рейтинг · 17 моделей</div>
+        <h2 class="section-title">Рейтинг AI-моделей по узбекскому языку</h2>
+        <p class="section-description">
+          1&nbsp;416 вопросов · деловой, неформальный, разговорный регистры · 6 типов языковых задач
+        </p>
+      </div>
+
+      <div class="chart-wrapper reveal">
+        <div class="chart-legend">
+          <div class="legend-item">
+            <span class="legend-dot" style="background:#1D4ED8"></span>
+            75%+ · Отличный
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style="background:#3B82F6"></span>
+            65–74% · Приемлемый
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style="background:#93C5FD"></span>
+            55–64% · Слабый
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style="background:#BFDBFE"></span>
+            &lt;55% · Недостаточный
+          </div>
+          <div class="legend-item">
+            <span class="legend-partial">*</span>
+            Частичные данные
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas id="ulabChart"></canvas>
+        </div>
+      </div>
+
+      <div class="details-toggle reveal">
+        <button class="btn-outline" id="toggleDetails">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" id="toggleIcon">
+            <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Показать полную таблицу
+        </button>
+      </div>
+
+      <div class="details-table-wrap" id="detailsTable">
+        <div class="table-scroll">
+          <table class="ranking-table">
+            <thead>
+              <tr>
+                <th class="col-rank">#</th>
+                <th class="col-model">Модель</th>
+                <th class="col-total">Точность</th>
+                <th class="col-coverage">Охват</th>
+              </tr>
+            </thead>
+            <tbody id="rankingTableBody"></tbody>
+          </table>
+        </div>
+        <p class="table-note">* Модели с частичными данными имеют предварительные результаты — окончательная точность может измениться при полном тестировании.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- KEY FINDINGS -->
+  <!-- ============================================================ -->
+  <section class="section section--dark" id="findings">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-eyebrow section-eyebrow--light">Что показало исследование</div>
+        <h2 class="section-title section-title--light">Ключевые выводы</h2>
+        <p class="section-description section-description--light">
+          Четыре стратегических наблюдения для руководства банка
+        </p>
+      </div>
+
+      <div class="conclusions-grid reveal" id="findingsGrid">
+
+        <div class="conclusion-card">
+          <div class="conclusion-number">&lt;75%</div>
+          <h4 class="conclusion-title">Узбекский AI ещё не решён</h4>
+          <p class="conclusion-text">
+            Лучший результат среди моделей с полными данными — 70,2%. Ни одна из 17 моделей не преодолела порог 75%. Рынок остаётся открытым — банк находится на переднем крае.
+          </p>
+          <div class="conclusion-tag">Состояние рынка</div>
+        </div>
+
+        <div class="conclusion-card">
+          <div class="conclusion-number">Open Source</div>
+          <h4 class="conclusion-title">Открытые модели превосходят коммерческие</h4>
+          <p class="conclusion-text">
+            Kimi K2.5 (70,2%) опережает лучший коммерческий вариант — Mistral Large (69,3%). Это открывает возможность самостоятельного развёртывания без передачи данных внешним поставщикам.
+          </p>
+          <div class="conclusion-tag">Суверенитет данных</div>
+        </div>
+
+        <div class="conclusion-card">
+          <div class="conclusion-number">10 п.п.</div>
+          <h4 class="conclusion-title">Плотный кластер: разрыв всего 10 п.п.</h4>
+          <p class="conclusion-text">
+            13 полностью протестированных моделей укладываются в диапазон 60–70%. При такой плотности конкуренции качество данных и задачи важнее выбора конкретной модели.
+          </p>
+          <div class="conclusion-tag">Качество данных решает</div>
+        </div>
+
+        <div class="conclusion-card">
+          <div class="conclusion-number">ULAB</div>
+          <h4 class="conclusion-title">Банк создал уникальный оценочный инструмент</h4>
+          <p class="conclusion-text">
+            ULAB MCQ — первый в Узбекистане банковский AI-бенчмарк. Долгосрочный актив для мониторинга рынка и потенциальная основа для обучения специализированной модели.
+          </p>
+          <div class="conclusion-tag">Актив банка</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- DETAILED ANALYSIS / HEATMAP + LEADER CARDS -->
+  <!-- ============================================================ -->
+  <section class="section section--light" id="details">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Углублённый анализ · Топ-10 моделей · 6 типов задач</div>
+        <h2 class="section-title">Результаты по типам задач</h2>
+        <p class="section-description">
+          Тепловая карта показывает точность по каждому из 6 типов задач: RC — понимание документов, GC — грамматика, WS — словарь, CL — контекст, RI — регистр, ED — обнаружение ошибок
+        </p>
+      </div>
+
+      <div class="details-layout">
+
+        <div class="heatmap-wrap reveal">
+          <div class="heatmap-legend">
+            <span class="heatmap-legend-label">Ниже</span>
+            <div class="heatmap-legend-scale">
+              <div style="background:#F3F4F6"></div>
+              <div style="background:#DBEAFE"></div>
+              <div style="background:#93C5FD"></div>
+              <div style="background:#3B82F6"></div>
+              <div style="background:#1E40AF"></div>
+            </div>
+            <span class="heatmap-legend-label">Выше</span>
+          </div>
+          <div class="table-scroll">
+            <table class="heatmap-table" id="heatmapTable"></table>
+          </div>
+        </div>
+
+        <div class="leaders-cards reveal" id="leaderCards">
+          <!-- Rendered by app.js -->
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- DEPARTMENT RECOMMENDATIONS -->
+  <!-- ============================================================ -->
+  <section class="section section--gray" id="departments">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Применение результатов · 40 департаментов</div>
+        <h2 class="section-title">Какая модель нужна каждому подразделению</h2>
+        <p class="section-description">
+          Каждый тип задач бенчмарка соответствует конкретным рабочим сценариям. Смотрите, какой тип задач критичен для вашего подразделения — и выбирайте модель по этому критерию
+        </p>
+      </div>
+
+      <div class="dg-grid" id="deptGroups">
+        <!-- Rendered by app.js renderDeptGroups() -->
+      </div>
+
+      <div class="dept-cta reveal">
+        <div class="dept-cta-text">
+          <h3>Детальный анализ по каждому из 40 департаментов</h3>
+          <p>Исполнительный отчёт содержит обоснованную рекомендацию по AI-модели для каждого подразделения: сценарий использования, ключевые задачи, лучшая модель и альтернативы с планом внедрения.</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="exec.html" class="btn-primary">
+            Открыть исполнительный отчёт
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="ULAB_Model_Results.xlsx" download="ULAB_Model_Results.xlsx" class="btn-primary" style="background:transparent;border:2px solid rgba(255,255,255,0.3);color:#fff;">
+            Скачать результаты (Excel)
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M8 2v9M4 7l4 4 4-4M3 13h10" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- HOW TO IMPROVE UZBEK AI -->
+  <!-- ============================================================ -->
+  <section class="section section--dark" id="improve">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-eyebrow section-eyebrow--light">Дорожная карта</div>
+        <h2 class="section-title section-title--light">Как улучшить знание узбекского языка</h2>
+        <p class="section-description section-description--light">
+          Пять конкретных подходов — от быстрых (2 недели) до стратегических (6 месяцев). Каждый даёт измеримый прирост точности по определённым типам задач
+        </p>
+      </div>
+
+      <div class="imp-grid" id="improveGrid">
+        <!-- Rendered by app.js renderImproveSection() -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER -->
+  <!-- ============================================================ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <svg class="footer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" style="color:rgba(255,255,255,0.5)">
+          <path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M20 10v11M8 10v11M16 10v11M12 10v11" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>ULAB Benchmark</span>
+      </div>
+      <p class="footer-text">Март 2026 · Данные собраны и обработаны командой банка</p>
+      <div class="footer-stats">
+        <span>17 моделей</span>
+        <span class="footer-sep">·</span>
+        <span>1 416 вопросов</span>
+        <span class="footer-sep">·</span>
+        <span>6 типов задач</span>
+      </div>
+      <a href="exec.html" class="footer-link" style="color:rgba(255,255,255,0.4);font-size:13px;text-decoration:none;">Исполнительный отчёт →</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
