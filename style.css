@@ -45,6 +45,8 @@
 html {
   scroll-behavior: smooth;
   font-size: 19px;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -55,6 +57,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  max-width: 100%;
+}
+
+img, canvas, video, iframe {
+  max-width: 100%;
+  height: auto;
 }
 
 /* ============================================================ */
@@ -1442,20 +1450,22 @@ body {
   .tab-btn { font-size: 14px; padding: 7px 14px; }
 
   /* ── Chart ── */
-  .chart-wrapper { padding: 16px; }
+  .chart-wrapper { padding: 16px; overflow-x: auto; }
+  .chart-container { min-width: 320px; }
 
   /* ── Ranking table ── */
   .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .ranking-table { font-size: 14px; }
+  .ranking-table { font-size: 14px; min-width: 480px; }
   .ranking-table th,
-  .ranking-table td { padding: 10px 12px; }
+  .ranking-table td { padding: 10px 12px; white-space: nowrap; }
 
   /* ── Heatmap ── */
   .details-layout { grid-template-columns: 1fr; }
-  .heatmap-wrap { padding: 16px; overflow-x: auto; }
-  .heatmap-table { font-size: 12px; }
+  .heatmap-wrap { padding: 16px; }
+  .heatmap-wrap .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .heatmap-table { font-size: 12px; min-width: 520px; }
   .heatmap-table thead th,
-  .heatmap-table tbody td { padding: 6px 7px; }
+  .heatmap-table tbody td { padding: 6px 7px; white-space: nowrap; }
   .leaders-cards { gap: 10px; }
   .leader-score { font-size: 24px; }
 
