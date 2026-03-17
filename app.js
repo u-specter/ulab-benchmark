@@ -3,7 +3,6 @@
 /* ============================================================ */
 const ULAB_RESULTS = [
   { id: 'kimi-k2p5', name: 'Kimi K2.5', type: 'opensource',  overall: 72.3, partial: false, answered: 1377, total: 1377, RC: 97.4, GC: 79.5, WS: 79.5, CL: 67.4, RI: 91.9, ED: 55.6 },
-  { id: 'mistral-large', name: 'Mistral Large 2512', type: 'commercial',  overall: 71.3, partial: false, answered: 1377, total: 1377, RC: 96.7, GC: 75.4, WS: 80.0, CL: 66.3, RI: 84.9, ED: 60.3 },
   { id: 'cogito-671b', name: 'Cogito 671B', type: 'opensource',  overall: 70.2, partial: false, answered: 1377, total: 1377, RC: 97.4, GC: 78.5, WS: 80.5, CL: 64.2, RI: 82.2, ED: 59.3 },
   { id: 'llama4-maverick', name: 'Llama 4 Maverick', type: 'opensource',  overall: 70.1, partial: false, answered: 1377, total: 1377, RC: 96.7, GC: 70.8, WS: 75.3, CL: 61.1, RI: 91.9, ED: 52.9 },
   { id: 'glm-5', name: 'GLM-5', type: 'opensource',  overall: 69.8, partial: false, answered: 1377, total: 1377, RC: 98.0, GC: 75.9, WS: 80.5, CL: 56.8, RI: 91.9, ED: 51.3 },
