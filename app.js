@@ -2,20 +2,37 @@
 /* DATA — ULAB Benchmark · 1,387 questions · March 2026         */
 /* ============================================================ */
 const ULAB_RESULTS = [
-  { id: 'kimi-k2p5', name: 'Kimi K2.5', type: 'opensource',  overall: 72.3, partial: false, answered: 1377, total: 1377, RC: 97.4, GC: 79.5, WS: 79.5, CL: 67.4, RI: 91.9, ED: 55.6 },
-  { id: 'cogito-671b', name: 'Cogito 671B', type: 'opensource',  overall: 70.2, partial: false, answered: 1377, total: 1377, RC: 97.4, GC: 78.5, WS: 80.5, CL: 64.2, RI: 82.2, ED: 59.3 },
-  { id: 'llama4-maverick', name: 'Llama 4 Maverick', type: 'opensource',  overall: 70.1, partial: false, answered: 1377, total: 1377, RC: 96.7, GC: 70.8, WS: 75.3, CL: 61.1, RI: 91.9, ED: 52.9 },
-  { id: 'glm-5', name: 'GLM-5', type: 'opensource',  overall: 69.8, partial: false, answered: 1377, total: 1377, RC: 98.0, GC: 75.9, WS: 80.5, CL: 56.8, RI: 91.9, ED: 51.3 },
-  { id: 'llama4-scout', name: 'Llama 4 Scout', type: 'opensource',  overall: 69.4, partial: false, answered: 1377, total: 1377, RC: 98.0, GC: 70.8, WS: 75.3, CL: 66.3, RI: 82.2, ED: 61.9 },
-  { id: 'kimi-k2-0905', name: 'Kimi K2 (0905)', type: 'opensource',  overall: 69.0, partial: false, answered: 1377, total: 1377, RC: 98.7, GC: 74.4, WS: 81.1, CL: 66.3, RI: 84.3, ED: 58.2 },
-  { id: 'kimi-k2', name: 'Kimi K2', type: 'opensource',  overall: 68.7, partial: false, answered: 1377, total: 1377, RC: 98.0, GC: 74.4, WS: 77.4, CL: 57.9, RI: 84.3, ED: 64.6 },
-  { id: 'deepseek-v3.1', name: 'DeepSeek V3.1', type: 'opensource',  overall: 68.6, partial: false, answered: 1377, total: 1377, RC: 96.0, GC: 77.4, WS: 77.9, CL: 60.0, RI: 84.9, ED: 60.8 },
-  { id: 'llama3.3-70b', name: 'Llama 3.3 70B', type: 'opensource',  overall: 68.3, partial: false, answered: 1377, total: 1377, RC: 97.4, GC: 75.4, WS: 71.1, CL: 63.2, RI: 89.7, ED: 69.8 },
-  { id: 'gpt-oss-120b', name: 'GPT-OSS 120B', type: 'opensource',  overall: 68.0, partial: false, answered: 1377, total: 1377, RC: 96.7, GC: 69.7, WS: 75.8, CL: 62.1, RI: 89.2, ED: 56.1 },
-  { id: 'gemma-3-27b', name: 'Gemma 3 27B', type: 'opensource',  overall: 67.8, partial: false, answered: 1377, total: 1377, RC: 97.4, GC: 74.4, WS: 75.8, CL: 57.9, RI: 90.8, ED: 59.3 },
-  { id: 'qwen3-32b', name: 'Qwen3 32B', type: 'opensource',  overall: 65.7, partial: false, answered: 1377, total: 1377, RC: 97.4, GC: 81.5, WS: 80.5, CL: 57.9, RI: 88.1, ED: 42.9 },
-  { id: 'ministral-14b', name: 'Ministral 14B', type: 'opensource',  overall: 65.1, partial: false, answered: 1377, total: 1377, RC: 98.0, GC: 70.3, WS: 73.7, CL: 65.3, RI: 84.3, ED: 59.8 },
-  { id: 'llama3.1-8b', name: 'Llama 3.1 8B', type: 'opensource',  overall: 61.7, partial: false, answered: 1377, total: 1377, RC: 94.7, GC: 65.6, WS: 70.0, CL: 44.2, RI: 80.5, ED: 58.2 },
+  { id: 'kimi-k2p5',       name: 'Kimi K2.5',        modelType: 'internal', type: 'opensource', overall: 72.3, partial: false, answered: 1377, total: 1377, RC: 97.4, GC: 79.5, WS: 79.5, CL: 67.4, RI: 91.9, ED: 55.6 },
+  { id: 'cogito-671b',     name: 'Cogito 671B',       modelType: 'internal', type: 'opensource', overall: 70.2, partial: false, answered: 1377, total: 1377, RC: 97.4, GC: 78.5, WS: 80.5, CL: 64.2, RI: 82.2, ED: 59.3 },
+  { id: 'llama4-maverick', name: 'Llama 4 Maverick',  modelType: 'internal', type: 'opensource', overall: 70.1, partial: false, answered: 1377, total: 1377, RC: 96.7, GC: 70.8, WS: 75.3, CL: 61.1, RI: 91.9, ED: 52.9 },
+  { id: 'glm-5',           name: 'GLM-5',             modelType: 'internal', type: 'opensource', overall: 69.8, partial: false, answered: 1377, total: 1377, RC: 98.0, GC: 75.9, WS: 80.5, CL: 56.8, RI: 91.9, ED: 51.3 },
+  { id: 'llama4-scout',    name: 'Llama 4 Scout',     modelType: 'internal', type: 'opensource', overall: 69.4, partial: false, answered: 1377, total: 1377, RC: 98.0, GC: 70.8, WS: 75.3, CL: 66.3, RI: 82.2, ED: 61.9 },
+  { id: 'kimi-k2-0905',    name: 'Kimi K2 (0905)',    modelType: 'internal', type: 'opensource', overall: 69.0, partial: false, answered: 1377, total: 1377, RC: 98.7, GC: 74.4, WS: 81.1, CL: 66.3, RI: 84.3, ED: 58.2 },
+  { id: 'kimi-k2',         name: 'Kimi K2',           modelType: 'internal', type: 'opensource', overall: 68.7, partial: false, answered: 1377, total: 1377, RC: 98.0, GC: 74.4, WS: 77.4, CL: 57.9, RI: 84.3, ED: 64.6 },
+  { id: 'deepseek-v3.1',   name: 'DeepSeek V3.1',     modelType: 'internal', type: 'opensource', overall: 68.6, partial: false, answered: 1377, total: 1377, RC: 96.0, GC: 77.4, WS: 77.9, CL: 60.0, RI: 84.9, ED: 60.8 },
+  { id: 'llama3.3-70b',    name: 'Llama 3.3 70B',     modelType: 'internal', type: 'opensource', overall: 68.3, partial: false, answered: 1377, total: 1377, RC: 97.4, GC: 75.4, WS: 71.1, CL: 63.2, RI: 89.7, ED: 69.8 },
+  { id: 'gpt-oss-120b',    name: 'GPT-OSS 120B',      modelType: 'internal', type: 'opensource', overall: 68.0, partial: false, answered: 1377, total: 1377, RC: 96.7, GC: 69.7, WS: 75.8, CL: 62.1, RI: 89.2, ED: 56.1 },
+  { id: 'gemma-3-27b',     name: 'Gemma 3 27B',       modelType: 'internal', type: 'opensource', overall: 67.8, partial: false, answered: 1377, total: 1377, RC: 97.4, GC: 74.4, WS: 75.8, CL: 57.9, RI: 90.8, ED: 59.3 },
+  { id: 'qwen3-32b',       name: 'Qwen3 32B',         modelType: 'internal', type: 'opensource', overall: 65.7, partial: false, answered: 1377, total: 1377, RC: 97.4, GC: 81.5, WS: 80.5, CL: 57.9, RI: 88.1, ED: 42.9 },
+  { id: 'ministral-14b',   name: 'Ministral 14B',     modelType: 'internal', type: 'opensource', overall: 65.1, partial: false, answered: 1377, total: 1377, RC: 98.0, GC: 70.3, WS: 73.7, CL: 65.3, RI: 84.3, ED: 59.8 },
+  { id: 'llama3.1-8b',     name: 'Llama 3.1 8B',      modelType: 'internal', type: 'opensource', overall: 61.7, partial: false, answered: 1377, total: 1377, RC: 94.7, GC: 65.6, WS: 70.0, CL: 44.2, RI: 80.5, ED: 58.2 },
+  {
+    id: 'tuzuk-gpt-oss-120b',
+    name: 'Tuzuk GPT-OSS-120B',
+    vendor: 'BalkomSoft / Tuzuk',
+    modelType: 'vendor',
+    type: 'opensource',
+    overall: 66.2,
+    partial: false,
+    answered: 1377,
+    total: 1377,
+    RC: 96.7,
+    GC: 70.3,
+    WS: 77.4,
+    CL: 52.6,
+    RI: 86.0,
+    ED: 54.0,
+  },
 ];
 
 /* ============================================================ */
@@ -47,6 +64,48 @@ function fmt(n) {
 /** Return models sorted descending by overall score. */
 function getSortedResults() {
   return [...ULAB_RESULTS].sort((a, b) => b.overall - a.overall);
+}
+
+/** Compute median overall score of internal models only. */
+function getInternalMedian() {
+  const scores = ULAB_RESULTS
+    .filter(m => m.modelType === 'internal')
+    .map(m => m.overall)
+    .sort((a, b) => a - b);
+  if (scores.length === 0) return 0;
+  const mid = Math.floor(scores.length / 2);
+  return scores.length % 2 === 0
+    ? (scores[mid - 1] + scores[mid]) / 2
+    : scores[mid];
+}
+
+/**
+ * Return performance badge config for a vendor model relative to internal median.
+ * Thresholds: >=median+3 → above, <=median-3 → below, else average.
+ */
+function getVendorPerformanceBadge(vendorOverall) {
+  const median = getInternalMedian();
+  if (vendorOverall >= median + 3) {
+    return { label: 'Выше среднего', cssClass: 'perf-badge--above' };
+  }
+  if (vendorOverall <= median - 3) {
+    return { label: 'Ниже среднего', cssClass: 'perf-badge--below' };
+  }
+  return { label: 'Средний уровень', cssClass: 'perf-badge--avg' };
+}
+
+/* ============================================================ */
+/* FILTER STATE                                                   */
+/* 'all' | 'internal' | 'vendor'                                 */
+/* ============================================================ */
+let activeFilter = 'all';
+
+/** Return filtered + sorted results based on activeFilter. */
+function getFilteredResults() {
+  const sorted = getSortedResults();
+  if (activeFilter === 'internal') return sorted.filter(m => m.modelType === 'internal');
+  if (activeFilter === 'vendor')   return sorted.filter(m => m.modelType === 'vendor');
+  return sorted;
 }
 
 /* ============================================================ */
@@ -133,7 +192,7 @@ function initReveal() {
 let ulabChart = null;
 
 function buildChartData() {
-  const sorted = getSortedResults();
+  const sorted = getFilteredResults();
   const medals = ['', '', ''];
 
   return {
@@ -141,7 +200,7 @@ function buildChartData() {
       (i < 3 ? medals[i] + ' ' : '') + m.name + (m.partial ? ' *' : '')
     ),
     values: sorted.map((m) => m.overall),
-    colors: sorted.map((m) => getBarColor(m.overall)),
+    colors: sorted.map((m) => m.modelType === 'vendor' ? '#7C3AED' : getBarColor(m.overall)),
     sorted,
   };
 }
@@ -179,7 +238,7 @@ function initUlabChart() {
   if (!canvas) return;
 
   const container = canvas.parentElement;
-  const height = ULAB_RESULTS.length * 40 + 64;
+  const height = getFilteredResults().length * 40 + 64;
   container.style.height = height + 'px';
 
   const { labels, values, colors, sorted } = buildChartData();
@@ -263,12 +322,18 @@ function renderRankingTable() {
   const tbody = document.getElementById('rankingTableBody');
   if (!tbody) return;
 
+  tbody.innerHTML = '';
+
   const medals = ['', '', ''];
   const rankClasses = ['gold', 'silver', 'bronze'];
 
-  getSortedResults().forEach((m, i) => {
+  getFilteredResults().forEach((m, i) => {
     const rank = i + 1;
+    const isVendor = m.modelType === 'vendor';
+    const perfBadge = isVendor ? getVendorPerformanceBadge(m.overall) : null;
     const tr = document.createElement('tr');
+    if (isVendor) tr.classList.add('row--vendor');
+
     tr.innerHTML = `
       <td>
         <span class="rank-num${rank <= 3 ? ' ' + rankClasses[rank - 1] : ''}">
@@ -279,11 +344,14 @@ function renderRankingTable() {
         <div class="model-name-cell">
           <div class="model-name">
             ${rank <= 3 ? medals[rank - 1] + ' ' : ''}${m.name}
+            ${isVendor ? `<span class="vendor-badge">Вендор</span>` : ''}
             <span class="model-type-badge ${m.type === 'commercial' ? 'badge--commercial' : 'badge--opensource'}">
               ${m.type === 'commercial' ? 'Commercial' : 'Open Source'}
             </span>
+            ${isVendor ? `<span class="perf-badge ${perfBadge.cssClass}">${perfBadge.label}</span>` : ''}
           </div>
           ${m.partial ? '<span class="partial-badge">* Частичные данные</span>' : ''}
+          ${isVendor && m.vendor ? `<div class="vendor-name-sub">${m.vendor}</div>` : ''}
         </div>
       </td>
       <td class="score-total">${fmt(m.overall)}</td>
@@ -450,6 +518,110 @@ function renderLeaderCards() {
       <div class="leader-note">${card.note}</div>
     `;
     container.appendChild(div);
+  });
+}
+
+/* ============================================================ */
+/* FILTER BUTTONS                                                 */
+/* ============================================================ */
+function initFilterButtons() {
+  const buttons = document.querySelectorAll('.filter-btn');
+  if (!buttons.length) return;
+
+  function applyFilter(filter) {
+    activeFilter = filter;
+
+    // Update button active states
+    buttons.forEach(btn => {
+      btn.classList.toggle('filter-btn--active', btn.dataset.filter === filter);
+    });
+
+    // Re-render table
+    renderRankingTable();
+
+    // Re-render chart: update data + height
+    if (ulabChart) {
+      const container = document.getElementById('ulabChart').parentElement;
+      const { labels, values, colors, sorted } = buildChartData();
+      container.style.height = (getFilteredResults().length * 40 + 64) + 'px';
+      ulabChart.data.labels = labels;
+      ulabChart.data.datasets[0].data = values;
+      ulabChart.data.datasets[0].backgroundColor = colors;
+      // Update tooltip reference
+      ulabChart.options.plugins.tooltip.callbacks.label = function(ctx) {
+        const model = sorted[ctx.dataIndex];
+        const lines = [' Точность: ' + fmt(ctx.parsed.x)];
+        if (model.partial) {
+          lines.push(
+            ' * Частичные данные: ' +
+            model.answered.toLocaleString('ru-RU') + ' / ' +
+            model.total.toLocaleString('ru-RU') + ' вопросов'
+          );
+        } else {
+          lines.push(' Охват: ' + model.answered.toLocaleString('ru-RU') + ' / ' + model.total.toLocaleString('ru-RU'));
+        }
+        return lines;
+      };
+      ulabChart.update();
+    }
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+  });
+
+  // Set initial active state
+  applyFilter(activeFilter);
+}
+
+/* ============================================================ */
+/* VENDOR SECTION — cards below the main leaderboard             */
+/* ============================================================ */
+function renderVendorSection() {
+  const container = document.getElementById('vendorCards');
+  if (!container) return;
+
+  const vendors = getSortedResults().filter(m => m.modelType === 'vendor');
+  if (!vendors.length) {
+    document.getElementById('vendor-section').style.display = 'none';
+    return;
+  }
+
+  const TASKS = ['RC', 'GC', 'WS', 'CL', 'RI', 'ED'];
+  const TASK_LABELS = {
+    RC: 'Документы', GC: 'Грамматика', WS: 'Словарь',
+    CL: 'Контекст', RI: 'Регистр', ED: 'Ошибки'
+  };
+
+  vendors.forEach(m => {
+    const badge = getVendorPerformanceBadge(m.overall);
+
+    const taskBreakdown = TASKS.map(task => {
+      const score = m[task] || 0;
+      const { bg, text } = getHeatmapStyle(score);
+      return `
+        <div class="vc-task-item">
+          <span class="vc-task-code">${task}</span>
+          <span class="vc-task-label">${TASK_LABELS[task]}</span>
+          <span class="vc-task-score" style="background:${bg};color:${text}">${score.toFixed(0)}%</span>
+        </div>
+      `;
+    }).join('');
+
+    const card = document.createElement('div');
+    card.className = 'vendor-card reveal';
+    card.innerHTML = `
+      <div class="vc-header">
+        <div class="vc-vendor-name">${m.vendor || ''}</div>
+        <span class="perf-badge ${badge.cssClass}">${badge.label}</span>
+      </div>
+      <div class="vc-model-name">${m.name}</div>
+      <div class="vc-overall">${fmt(m.overall)}</div>
+      <div class="vc-overall-label">общая точность</div>
+      <div class="vc-tasks">${taskBreakdown}</div>
+      <div class="vc-coverage">${m.answered.toLocaleString('ru-RU')} / ${m.total.toLocaleString('ru-RU')} вопросов</div>
+    `;
+    container.appendChild(card);
   });
 }
 
@@ -630,8 +802,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initUlabChart();
   initDetailsToggle();
   renderRankingTable();
+  initFilterButtons();
   renderHeatmap();
   renderLeaderCards();
+  renderVendorSection();
   renderDeptGroups();
   renderImproveSection();
   initReveal(); // LAST — чтобы все динамически созданные .reveal элементы уже были в DOM

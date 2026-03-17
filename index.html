@@ -523,6 +523,189 @@
       line-height: 1.5;
     }
 
+    /* ── Filter Buttons ── */
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border, #E5E7EB);
+      background: white;
+      font-family: Inter, -apple-system, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary, #6B7280);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+    }
+    .filter-btn:hover {
+      border-color: #93C5FD;
+      color: var(--text, #111827);
+    }
+    .filter-btn--active {
+      background: #1D4ED8;
+      border-color: #1D4ED8;
+      color: white;
+    }
+    .filter-btn--active:hover {
+      background: #1E40AF;
+      border-color: #1E40AF;
+      color: white;
+    }
+
+    /* ── Vendor Badge (inline in model name) ── */
+    .vendor-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: #EDE9FE;
+      color: #5B21B6;
+      border-radius: 5px;
+      padding: 2px 7px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+    .vendor-name-sub {
+      font-size: 12px;
+      color: var(--text-muted, #9CA3AF);
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    /* ── Performance Badges ── */
+    .perf-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 5px;
+      padding: 2px 8px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+    .perf-badge--above { background: #D1FAE5; color: #065F46; }
+    .perf-badge--below { background: #FEE2E2; color: #991B1B; }
+    .perf-badge--avg   { background: #FEF3C7; color: #92400E; }
+
+    /* ── Vendor row highlight ── */
+    .row--vendor {
+      background: #FAF5FF;
+    }
+    .row--vendor:hover {
+      background: #F3E8FF !important;
+    }
+
+    /* ── Vendor Cards Section ── */
+    #vendor-section {
+      background: var(--bg-light, white);
+    }
+    .vendor-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    @media (max-width: 700px) {
+      .vendor-cards-grid { grid-template-columns: 1fr; }
+    }
+    .vendor-card {
+      background: white;
+      border: 2px solid #DDD6FE;
+      border-radius: 20px;
+      padding: 28px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .vendor-card:hover {
+      box-shadow: 0 8px 32px rgba(124, 58, 237, 0.12);
+      transform: translateY(-2px);
+    }
+    .vc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .vc-vendor-name {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #7C3AED;
+    }
+    .vc-model-name {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text, #111827);
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .vc-overall {
+      font-size: 48px;
+      font-weight: 800;
+      color: #7C3AED;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+    .vc-overall-label {
+      font-size: 12px;
+      color: var(--text-muted, #9CA3AF);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .vc-tasks {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .vc-task-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .vc-task-code {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      background: #EDE9FE;
+      color: #5B21B6;
+      border-radius: 4px;
+      padding: 2px 6px;
+      min-width: 28px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .vc-task-label {
+      font-size: 12px;
+      color: var(--text-secondary, #6B7280);
+      flex: 1;
+    }
+    .vc-task-score {
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 5px;
+      padding: 2px 8px;
+      min-width: 44px;
+      text-align: right;
+    }
+    .vc-coverage {
+      font-size: 12px;
+      color: var(--text-muted, #9CA3AF);
+      border-top: 1px solid #EDE9FE;
+      padding-top: 12px;
+      margin-top: 4px;
+    }
+
     /* Department CTA */
     .dept-cta {
       background: var(--dark);
@@ -577,6 +760,7 @@
         <a href="#methodology" class="nav-link">Методология</a>
         <a href="#dataset" class="nav-link">Датасет</a>
         <a href="#ulab-ranking" class="nav-link">Рейтинг</a>
+        <a href="#vendor-section" class="nav-link">Вендоры</a>
         <a href="#details" class="nav-link">Детали</a>
         <a href="#departments" class="nav-link">Департаменты</a>
         <a href="#improve" class="nav-link">Улучшение</a>
@@ -919,6 +1103,18 @@
         </div>
       </div>
 
+      <div class="filter-bar reveal">
+        <button class="filter-btn filter-btn--active" data-filter="all">
+          Все модели
+        </button>
+        <button class="filter-btn" data-filter="internal">
+          Только внутренние
+        </button>
+        <button class="filter-btn" data-filter="vendor">
+          Только вендоры
+        </button>
+      </div>
+
       <div class="details-toggle reveal">
         <button class="btn-outline" id="toggleDetails">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" id="toggleIcon">
@@ -945,6 +1141,25 @@
         <p class="table-note">* Модели с частичными данными имеют предварительные результаты — окончательная точность может измениться при полном тестировании.</p>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- VENDOR LEADERBOARD                                           -->
+  <!-- ============================================================ -->
+  <section class="section section--light" id="vendor-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Партнёрские решения</div>
+        <h2 class="section-title">Рейтинг вендоров</h2>
+        <p class="section-description">
+          Результаты вендорных AI-решений на бенчмарке ULAB — сравнение с медианой внутренних моделей
+        </p>
+      </div>
+
+      <div class="vendor-cards-grid" id="vendorCards">
+        <!-- Rendered by app.js renderVendorSection() -->
+      </div>
     </div>
   </section>
 
