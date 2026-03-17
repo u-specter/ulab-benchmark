@@ -801,6 +801,19 @@
     .mi-score-bar { height: 100%; border-radius: 3px; transition: width 0.4s ease; }
     .mi-score-label { font-size: 0.8rem; color: #4b5563; white-space: nowrap; }
     .mi-score-val { font-size: 0.78rem; font-weight: 700; padding: 2px 7px; border-radius: 6px; min-width: 44px; text-align: center; }
+    .mi-deploy-section { margin-bottom: 20px; }
+    .mi-deploy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+    .mi-deploy-item {
+      background: #f0f7ff; border: 1px solid #dbeafe; border-radius: 10px;
+      padding: 10px 12px; display: flex; flex-direction: column; gap: 3px;
+    }
+    .mi-deploy-icon { font-size: 1.1rem; line-height: 1; }
+    .mi-deploy-label { font-size: 0.68rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+    .mi-deploy-value { font-size: 0.82rem; font-weight: 600; color: #1e3a5f; line-height: 1.3; }
+    .mi-deploy-note {
+      background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px;
+      padding: 8px 12px; font-size: 0.8rem; color: #0369a1;
+    }
     .mi-note {
       margin-top: 16px; background: #fffbeb; border: 1px solid #fde68a;
       border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; color: #92400e;
@@ -1426,6 +1439,10 @@
       <div class="mi-body">
         <div class="mi-section-title">Характеристики модели</div>
         <div class="mi-specs"></div>
+        <div class="mi-deploy-section">
+          <div class="mi-section-title">Требования к серверу</div>
+          <div class="mi-deploy"></div>
+        </div>
         <div class="mi-section-title">Результаты по типам задач</div>
         <div class="mi-scores"></div>
         <div class="mi-note" style="display:none"></div>

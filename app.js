@@ -6,85 +6,127 @@ const ULAB_RESULTS = [
     id: 'kimi-k2p5', name: 'Kimi K2.5', modelType: 'internal', type: 'opensource',
     overall: 72.3, partial: false, answered: 1377, total: 1377,
     RC: 97.4, GC: 79.5, WS: 79.5, CL: 67.4, RI: 91.9, ED: 55.6,
-    info: { developer: 'Moonshot AI', arch: 'MoE', params: '~1T', active: '32B', context: '128K', license: 'Apache 2.0', released: 'Июль 2025' },
+    info: {
+      developer: 'Moonshot AI', arch: 'MoE', params: '~1T', active: '32B', context: '128K', license: 'Apache 2.0', released: 'Июль 2025',
+      deploy: { vram: '~2 ТБ (fp16) / ~500 ГБ (int4)', gpu: '24× H100 80GB (fp16) или 8× H100 80GB (int4)', ram: '1 ТБ+', disk: '~2 ТБ', note_deploy: 'Требует кластер GPU; рекомендуется облачный деплой (Together AI, Fireworks)' },
+    },
   },
   {
     id: 'cogito-671b', name: 'Cogito 671B', modelType: 'internal', type: 'opensource',
     overall: 70.2, partial: false, answered: 1377, total: 1377,
     RC: 97.4, GC: 78.5, WS: 80.5, CL: 64.2, RI: 82.2, ED: 59.3,
-    info: { developer: 'Deep Cogito', arch: 'MoE', params: '671B', active: '37B', context: '128K', license: 'Apache 2.0', released: 'Апрель 2025', note: 'Reasoning-модель на базе DeepSeek-R1' },
+    info: {
+      developer: 'Deep Cogito', arch: 'MoE', params: '671B', active: '37B', context: '128K', license: 'Apache 2.0', released: 'Апрель 2025', note: 'Reasoning-модель на базе DeepSeek-R1',
+      deploy: { vram: '~1.3 ТБ (fp16) / ~335 ГБ (int4)', gpu: '16× H100 80GB (fp16) или 5× H100 80GB (int4)', ram: '512 ГБ+', disk: '~1.3 ТБ', note_deploy: 'Доступна через Together AI и Fireworks без локального деплоя' },
+    },
   },
   {
     id: 'llama4-maverick', name: 'Llama 4 Maverick', modelType: 'internal', type: 'opensource',
     overall: 70.1, partial: false, answered: 1377, total: 1377,
     RC: 96.7, GC: 70.8, WS: 75.3, CL: 61.1, RI: 91.9, ED: 52.9,
-    info: { developer: 'Meta AI', arch: 'MoE', params: '400B', active: '17B', context: '1M', license: 'Llama 4 Community', released: 'Апрель 2025', note: '128 экспертов, мультимодальная' },
+    info: {
+      developer: 'Meta AI', arch: 'MoE', params: '400B', active: '17B', context: '1M', license: 'Llama 4 Community', released: 'Апрель 2025', note: '128 экспертов, мультимодальная',
+      deploy: { vram: '~800 ГБ (fp16) / ~200 ГБ (int4)', gpu: '10× H100 80GB (fp16) или 4× H100 80GB (int4 via vLLM)', ram: '512 ГБ+', disk: '~800 ГБ', note_deploy: 'Доступна через Groq и SambaNova без локального деплоя' },
+    },
   },
   {
     id: 'glm-5', name: 'GLM-5', modelType: 'internal', type: 'opensource',
     overall: 69.8, partial: false, answered: 1377, total: 1377,
     RC: 98.0, GC: 75.9, WS: 80.5, CL: 56.8, RI: 91.9, ED: 51.3,
-    info: { developer: 'Zhipu AI / THU', arch: 'Dense', params: '600B+', context: '128K', license: 'GLM License', released: '2025' },
+    info: {
+      developer: 'Zhipu AI / THU', arch: 'Dense', params: '600B+', context: '128K', license: 'GLM License', released: '2025',
+      deploy: { vram: '~1.2 ТБ (fp16) / ~300 ГБ (int4)', gpu: '16× H100 80GB (fp16) или 4× H100 80GB (int4)', ram: '512 ГБ+', disk: '~1.2 ТБ', note_deploy: 'Рекомендуется использовать через API Zhipu AI' },
+    },
   },
   {
     id: 'llama4-scout', name: 'Llama 4 Scout', modelType: 'internal', type: 'opensource',
     overall: 69.4, partial: false, answered: 1377, total: 1377,
     RC: 98.0, GC: 70.8, WS: 75.3, CL: 66.3, RI: 82.2, ED: 61.9,
-    info: { developer: 'Meta AI', arch: 'MoE', params: '109B', active: '17B', context: '10M', license: 'Llama 4 Community', released: 'Апрель 2025', note: '16 экспертов, сверхдлинный контекст' },
+    info: {
+      developer: 'Meta AI', arch: 'MoE', params: '109B', active: '17B', context: '10M', license: 'Llama 4 Community', released: 'Апрель 2025', note: '16 экспертов, сверхдлинный контекст',
+      deploy: { vram: '~218 ГБ (fp16) / ~55 ГБ (int4)', gpu: '3× H100 80GB (fp16) или 1× H100 80GB (int4)', ram: '256 ГБ', disk: '~220 ГБ', note_deploy: 'Оптимальный баланс качества и требований к железу среди больших моделей' },
+    },
   },
   {
     id: 'kimi-k2-0905', name: 'Kimi K2 (0905)', modelType: 'internal', type: 'opensource',
     overall: 69.0, partial: false, answered: 1377, total: 1377,
     RC: 98.7, GC: 74.4, WS: 81.1, CL: 66.3, RI: 84.3, ED: 58.2,
-    info: { developer: 'Moonshot AI', arch: 'MoE', params: '~1T', active: '32B', context: '128K', license: 'Apache 2.0', released: 'Сентябрь 2025', note: 'Обновлённая версия Kimi K2' },
+    info: {
+      developer: 'Moonshot AI', arch: 'MoE', params: '~1T', active: '32B', context: '128K', license: 'Apache 2.0', released: 'Сентябрь 2025', note: 'Обновлённая версия Kimi K2',
+      deploy: { vram: '~2 ТБ (fp16) / ~500 ГБ (int4)', gpu: '24× H100 80GB (fp16) или 8× H100 80GB (int4)', ram: '1 ТБ+', disk: '~2 ТБ', note_deploy: 'Требует кластер GPU; рекомендуется облачный деплой (Together AI, Fireworks)' },
+    },
   },
   {
     id: 'kimi-k2', name: 'Kimi K2', modelType: 'internal', type: 'opensource',
     overall: 68.7, partial: false, answered: 1377, total: 1377,
     RC: 98.0, GC: 74.4, WS: 77.4, CL: 57.9, RI: 84.3, ED: 64.6,
-    info: { developer: 'Moonshot AI', arch: 'MoE', params: '~1T', active: '32B', context: '128K', license: 'Apache 2.0', released: 'Июль 2025' },
+    info: {
+      developer: 'Moonshot AI', arch: 'MoE', params: '~1T', active: '32B', context: '128K', license: 'Apache 2.0', released: 'Июль 2025',
+      deploy: { vram: '~2 ТБ (fp16) / ~500 ГБ (int4)', gpu: '24× H100 80GB (fp16) или 8× H100 80GB (int4)', ram: '1 ТБ+', disk: '~2 ТБ', note_deploy: 'Требует кластер GPU; рекомендуется облачный деплой (Together AI, Fireworks)' },
+    },
   },
   {
     id: 'deepseek-v3.1', name: 'DeepSeek V3.1', modelType: 'internal', type: 'opensource',
     overall: 68.6, partial: false, answered: 1377, total: 1377,
     RC: 96.0, GC: 77.4, WS: 77.9, CL: 60.0, RI: 84.9, ED: 60.8,
-    info: { developer: 'DeepSeek AI', arch: 'MoE', params: '671B', active: '37B', context: '128K', license: 'DeepSeek License', released: 'Март 2025' },
+    info: {
+      developer: 'DeepSeek AI', arch: 'MoE', params: '671B', active: '37B', context: '128K', license: 'DeepSeek License', released: 'Март 2025',
+      deploy: { vram: '~1.3 ТБ (fp16) / ~335 ГБ (int4)', gpu: '16× H100 80GB (fp16) или 5× H100 80GB (int4)', ram: '512 ГБ+', disk: '~1.3 ТБ', note_deploy: 'Популярный выбор — локальный деплой через vLLM или SGLang' },
+    },
   },
   {
     id: 'llama3.3-70b', name: 'Llama 3.3 70B', modelType: 'internal', type: 'opensource',
     overall: 68.3, partial: false, answered: 1377, total: 1377,
     RC: 97.4, GC: 75.4, WS: 71.1, CL: 63.2, RI: 89.7, ED: 69.8,
-    info: { developer: 'Meta AI', arch: 'Dense', params: '70B', context: '128K', license: 'Llama 3.3 Community', released: 'Декабрь 2024' },
+    info: {
+      developer: 'Meta AI', arch: 'Dense', params: '70B', context: '128K', license: 'Llama 3.3 Community', released: 'Декабрь 2024',
+      deploy: { vram: '~140 ГБ (fp16) / ~35 ГБ (int4)', gpu: '2× H100 80GB (fp16) или 1× A100 80GB (int4)', ram: '128 ГБ', disk: '~140 ГБ', note_deploy: 'Хорошо подходит для деплоя в банковском частном облаке' },
+    },
   },
   {
     id: 'gpt-oss-120b', name: 'GPT-OSS 120B', modelType: 'internal', type: 'opensource',
     overall: 68.0, partial: false, answered: 1377, total: 1377,
     RC: 96.7, GC: 69.7, WS: 75.8, CL: 62.1, RI: 89.2, ED: 56.1,
-    info: { developer: 'Microsoft / OpenAI', arch: 'Dense', params: '120B', context: '128K', license: 'Open Source', released: '2025' },
+    info: {
+      developer: 'Microsoft / OpenAI', arch: 'Dense', params: '120B', context: '128K', license: 'Open Source', released: '2025',
+      deploy: { vram: '~240 ГБ (fp16) / ~60 ГБ (int4)', gpu: '3× H100 80GB (fp16) или 1× H100 80GB (int4)', ram: '256 ГБ', disk: '~240 ГБ', note_deploy: 'Доступна через Groq и Baseten' },
+    },
   },
   {
     id: 'gemma-3-27b', name: 'Gemma 3 27B', modelType: 'internal', type: 'opensource',
     overall: 67.8, partial: false, answered: 1377, total: 1377,
     RC: 97.4, GC: 74.4, WS: 75.8, CL: 57.9, RI: 90.8, ED: 59.3,
-    info: { developer: 'Google DeepMind', arch: 'Dense', params: '27B', context: '128K', license: 'Gemma License', released: 'Март 2025' },
+    info: {
+      developer: 'Google DeepMind', arch: 'Dense', params: '27B', context: '128K', license: 'Gemma License', released: 'Март 2025',
+      deploy: { vram: '~54 ГБ (fp16) / ~14 ГБ (int4)', gpu: '1× H100 80GB (fp16) или 1× RTX 4090 24GB (int4)', ram: '64 ГБ', disk: '~54 ГБ', note_deploy: 'Реальный вариант для on-premise деплоя на одной GPU-машине' },
+    },
   },
   {
     id: 'qwen3-32b', name: 'Qwen3 32B', modelType: 'internal', type: 'opensource',
     overall: 65.7, partial: false, answered: 1377, total: 1377,
     RC: 97.4, GC: 81.5, WS: 80.5, CL: 57.9, RI: 88.1, ED: 42.9,
-    info: { developer: 'Alibaba DAMO', arch: 'Dense', params: '32B', context: '32K', license: 'Apache 2.0', released: 'Апрель 2025', note: 'Поддерживает режим thinking' },
+    info: {
+      developer: 'Alibaba DAMO', arch: 'Dense', params: '32B', context: '32K', license: 'Apache 2.0', released: 'Апрель 2025', note: 'Поддерживает режим thinking',
+      deploy: { vram: '~64 ГБ (fp16) / ~16 ГБ (int4)', gpu: '1× H100 80GB (fp16) или 1× RTX 4090 24GB (int4)', ram: '64 ГБ', disk: '~64 ГБ', note_deploy: 'Один из самых доступных вариантов для локального деплоя' },
+    },
   },
   {
     id: 'ministral-14b', name: 'Ministral 14B', modelType: 'internal', type: 'opensource',
     overall: 65.1, partial: false, answered: 1377, total: 1377,
     RC: 98.0, GC: 70.3, WS: 73.7, CL: 65.3, RI: 84.3, ED: 59.8,
-    info: { developer: 'Mistral AI', arch: 'Dense', params: '14B', context: '128K', license: 'Mistral Research', released: 'Октябрь 2024' },
+    info: {
+      developer: 'Mistral AI', arch: 'Dense', params: '14B', context: '128K', license: 'Mistral Research', released: 'Октябрь 2024',
+      deploy: { vram: '~28 ГБ (fp16) / ~7 ГБ (int4)', gpu: '1× A6000 48GB (fp16) или 1× RTX 4090 (int4)', ram: '32 ГБ', disk: '~28 ГБ', note_deploy: 'Минимальные требования из всех протестированных — идеален для пилота on-premise' },
+    },
   },
   {
     id: 'llama3.1-8b', name: 'Llama 3.1 8B', modelType: 'internal', type: 'opensource',
     overall: 61.7, partial: false, answered: 1377, total: 1377,
     RC: 94.7, GC: 65.6, WS: 70.0, CL: 44.2, RI: 80.5, ED: 58.2,
-    info: { developer: 'Meta AI', arch: 'Dense', params: '8B', context: '128K', license: 'Llama 3.1 Community', released: 'Июль 2024' },
+    info: {
+      developer: 'Meta AI', arch: 'Dense', params: '8B', context: '128K', license: 'Llama 3.1 Community', released: 'Июль 2024',
+      deploy: { vram: '~16 ГБ (fp16) / ~5 ГБ (int4)', gpu: '1× RTX 4090 24GB (fp16) или потребительская GPU 8GB (int4)', ram: '32 ГБ', disk: '~16 ГБ', note_deploy: 'Запускается даже на ноутбуке с GPU; самый доступный вариант' },
+    },
   },
   {
     id: 'tuzuk-gpt-oss-120b',
@@ -97,7 +139,10 @@ const ULAB_RESULTS = [
     answered: 1377,
     total: 1377,
     RC: 96.7, GC: 70.3, WS: 77.4, CL: 52.6, RI: 86.0, ED: 54.0,
-    info: { developer: 'BalkomSoft (Tuzuk)', arch: 'Dense', params: '120B', context: '128K', license: 'Проприетарная', note: 'Размещена на инфраструктуре Baseten' },
+    info: {
+      developer: 'BalkomSoft (Tuzuk)', arch: 'Dense', params: '120B', context: '128K', license: 'Проприетарная', note: 'Размещена на инфраструктуре Baseten',
+      deploy: { vram: 'Управляется вендором', gpu: 'Управляется вендором (Baseten)', ram: 'Управляется вендором', disk: 'Управляется вендором', note_deploy: 'SaaS-решение — не требует собственного железа, деплой на стороне BalkomSoft' },
+    },
   },
 ];
 
@@ -455,6 +500,33 @@ function showModelModal(m) {
       <span class="mi-value">${val}</span>
     </div>`).join('');
 
+  const d = info.deploy || {};
+  const deployHtml = d.gpu ? `
+    <div class="mi-deploy-grid">
+      <div class="mi-deploy-item">
+        <div class="mi-deploy-icon">🖥</div>
+        <div class="mi-deploy-label">GPU</div>
+        <div class="mi-deploy-value">${d.gpu}</div>
+      </div>
+      <div class="mi-deploy-item">
+        <div class="mi-deploy-icon">⚡</div>
+        <div class="mi-deploy-label">VRAM</div>
+        <div class="mi-deploy-value">${d.vram}</div>
+      </div>
+      <div class="mi-deploy-item">
+        <div class="mi-deploy-icon">🧠</div>
+        <div class="mi-deploy-label">RAM</div>
+        <div class="mi-deploy-value">${d.ram}</div>
+      </div>
+      <div class="mi-deploy-item">
+        <div class="mi-deploy-icon">💾</div>
+        <div class="mi-deploy-label">Диск</div>
+        <div class="mi-deploy-value">${d.disk}</div>
+      </div>
+    </div>
+    ${d.note_deploy ? `<div class="mi-deploy-note">${d.note_deploy}</div>` : ''}
+  ` : '';
+
   const scoresHtml = TASKS.map(t => {
     const score = m[t] || 0;
     const { bg, text } = getHeatmapStyle(score);
@@ -484,6 +556,8 @@ function showModelModal(m) {
   `;
   modal.querySelector('.mi-specs').innerHTML = specsHtml;
   modal.querySelector('.mi-scores').innerHTML = scoresHtml;
+  modal.querySelector('.mi-deploy').innerHTML = deployHtml;
+  modal.querySelector('.mi-deploy-section').style.display = deployHtml ? 'block' : 'none';
   modal.querySelector('.mi-note').textContent = info.note || '';
   modal.querySelector('.mi-note').style.display = info.note ? 'block' : 'none';
 
