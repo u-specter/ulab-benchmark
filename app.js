@@ -2,20 +2,90 @@
 /* DATA — ULAB Benchmark · 1,387 questions · March 2026         */
 /* ============================================================ */
 const ULAB_RESULTS = [
-  { id: 'kimi-k2p5',       name: 'Kimi K2.5',        modelType: 'internal', type: 'opensource', overall: 72.3, partial: false, answered: 1377, total: 1377, RC: 97.4, GC: 79.5, WS: 79.5, CL: 67.4, RI: 91.9, ED: 55.6 },
-  { id: 'cogito-671b',     name: 'Cogito 671B',       modelType: 'internal', type: 'opensource', overall: 70.2, partial: false, answered: 1377, total: 1377, RC: 97.4, GC: 78.5, WS: 80.5, CL: 64.2, RI: 82.2, ED: 59.3 },
-  { id: 'llama4-maverick', name: 'Llama 4 Maverick',  modelType: 'internal', type: 'opensource', overall: 70.1, partial: false, answered: 1377, total: 1377, RC: 96.7, GC: 70.8, WS: 75.3, CL: 61.1, RI: 91.9, ED: 52.9 },
-  { id: 'glm-5',           name: 'GLM-5',             modelType: 'internal', type: 'opensource', overall: 69.8, partial: false, answered: 1377, total: 1377, RC: 98.0, GC: 75.9, WS: 80.5, CL: 56.8, RI: 91.9, ED: 51.3 },
-  { id: 'llama4-scout',    name: 'Llama 4 Scout',     modelType: 'internal', type: 'opensource', overall: 69.4, partial: false, answered: 1377, total: 1377, RC: 98.0, GC: 70.8, WS: 75.3, CL: 66.3, RI: 82.2, ED: 61.9 },
-  { id: 'kimi-k2-0905',    name: 'Kimi K2 (0905)',    modelType: 'internal', type: 'opensource', overall: 69.0, partial: false, answered: 1377, total: 1377, RC: 98.7, GC: 74.4, WS: 81.1, CL: 66.3, RI: 84.3, ED: 58.2 },
-  { id: 'kimi-k2',         name: 'Kimi K2',           modelType: 'internal', type: 'opensource', overall: 68.7, partial: false, answered: 1377, total: 1377, RC: 98.0, GC: 74.4, WS: 77.4, CL: 57.9, RI: 84.3, ED: 64.6 },
-  { id: 'deepseek-v3.1',   name: 'DeepSeek V3.1',     modelType: 'internal', type: 'opensource', overall: 68.6, partial: false, answered: 1377, total: 1377, RC: 96.0, GC: 77.4, WS: 77.9, CL: 60.0, RI: 84.9, ED: 60.8 },
-  { id: 'llama3.3-70b',    name: 'Llama 3.3 70B',     modelType: 'internal', type: 'opensource', overall: 68.3, partial: false, answered: 1377, total: 1377, RC: 97.4, GC: 75.4, WS: 71.1, CL: 63.2, RI: 89.7, ED: 69.8 },
-  { id: 'gpt-oss-120b',    name: 'GPT-OSS 120B',      modelType: 'internal', type: 'opensource', overall: 68.0, partial: false, answered: 1377, total: 1377, RC: 96.7, GC: 69.7, WS: 75.8, CL: 62.1, RI: 89.2, ED: 56.1 },
-  { id: 'gemma-3-27b',     name: 'Gemma 3 27B',       modelType: 'internal', type: 'opensource', overall: 67.8, partial: false, answered: 1377, total: 1377, RC: 97.4, GC: 74.4, WS: 75.8, CL: 57.9, RI: 90.8, ED: 59.3 },
-  { id: 'qwen3-32b',       name: 'Qwen3 32B',         modelType: 'internal', type: 'opensource', overall: 65.7, partial: false, answered: 1377, total: 1377, RC: 97.4, GC: 81.5, WS: 80.5, CL: 57.9, RI: 88.1, ED: 42.9 },
-  { id: 'ministral-14b',   name: 'Ministral 14B',     modelType: 'internal', type: 'opensource', overall: 65.1, partial: false, answered: 1377, total: 1377, RC: 98.0, GC: 70.3, WS: 73.7, CL: 65.3, RI: 84.3, ED: 59.8 },
-  { id: 'llama3.1-8b',     name: 'Llama 3.1 8B',      modelType: 'internal', type: 'opensource', overall: 61.7, partial: false, answered: 1377, total: 1377, RC: 94.7, GC: 65.6, WS: 70.0, CL: 44.2, RI: 80.5, ED: 58.2 },
+  {
+    id: 'kimi-k2p5', name: 'Kimi K2.5', modelType: 'internal', type: 'opensource',
+    overall: 72.3, partial: false, answered: 1377, total: 1377,
+    RC: 97.4, GC: 79.5, WS: 79.5, CL: 67.4, RI: 91.9, ED: 55.6,
+    info: { developer: 'Moonshot AI', arch: 'MoE', params: '~1T', active: '32B', context: '128K', license: 'Apache 2.0', released: 'Июль 2025' },
+  },
+  {
+    id: 'cogito-671b', name: 'Cogito 671B', modelType: 'internal', type: 'opensource',
+    overall: 70.2, partial: false, answered: 1377, total: 1377,
+    RC: 97.4, GC: 78.5, WS: 80.5, CL: 64.2, RI: 82.2, ED: 59.3,
+    info: { developer: 'Deep Cogito', arch: 'MoE', params: '671B', active: '37B', context: '128K', license: 'Apache 2.0', released: 'Апрель 2025', note: 'Reasoning-модель на базе DeepSeek-R1' },
+  },
+  {
+    id: 'llama4-maverick', name: 'Llama 4 Maverick', modelType: 'internal', type: 'opensource',
+    overall: 70.1, partial: false, answered: 1377, total: 1377,
+    RC: 96.7, GC: 70.8, WS: 75.3, CL: 61.1, RI: 91.9, ED: 52.9,
+    info: { developer: 'Meta AI', arch: 'MoE', params: '400B', active: '17B', context: '1M', license: 'Llama 4 Community', released: 'Апрель 2025', note: '128 экспертов, мультимодальная' },
+  },
+  {
+    id: 'glm-5', name: 'GLM-5', modelType: 'internal', type: 'opensource',
+    overall: 69.8, partial: false, answered: 1377, total: 1377,
+    RC: 98.0, GC: 75.9, WS: 80.5, CL: 56.8, RI: 91.9, ED: 51.3,
+    info: { developer: 'Zhipu AI / THU', arch: 'Dense', params: '600B+', context: '128K', license: 'GLM License', released: '2025' },
+  },
+  {
+    id: 'llama4-scout', name: 'Llama 4 Scout', modelType: 'internal', type: 'opensource',
+    overall: 69.4, partial: false, answered: 1377, total: 1377,
+    RC: 98.0, GC: 70.8, WS: 75.3, CL: 66.3, RI: 82.2, ED: 61.9,
+    info: { developer: 'Meta AI', arch: 'MoE', params: '109B', active: '17B', context: '10M', license: 'Llama 4 Community', released: 'Апрель 2025', note: '16 экспертов, сверхдлинный контекст' },
+  },
+  {
+    id: 'kimi-k2-0905', name: 'Kimi K2 (0905)', modelType: 'internal', type: 'opensource',
+    overall: 69.0, partial: false, answered: 1377, total: 1377,
+    RC: 98.7, GC: 74.4, WS: 81.1, CL: 66.3, RI: 84.3, ED: 58.2,
+    info: { developer: 'Moonshot AI', arch: 'MoE', params: '~1T', active: '32B', context: '128K', license: 'Apache 2.0', released: 'Сентябрь 2025', note: 'Обновлённая версия Kimi K2' },
+  },
+  {
+    id: 'kimi-k2', name: 'Kimi K2', modelType: 'internal', type: 'opensource',
+    overall: 68.7, partial: false, answered: 1377, total: 1377,
+    RC: 98.0, GC: 74.4, WS: 77.4, CL: 57.9, RI: 84.3, ED: 64.6,
+    info: { developer: 'Moonshot AI', arch: 'MoE', params: '~1T', active: '32B', context: '128K', license: 'Apache 2.0', released: 'Июль 2025' },
+  },
+  {
+    id: 'deepseek-v3.1', name: 'DeepSeek V3.1', modelType: 'internal', type: 'opensource',
+    overall: 68.6, partial: false, answered: 1377, total: 1377,
+    RC: 96.0, GC: 77.4, WS: 77.9, CL: 60.0, RI: 84.9, ED: 60.8,
+    info: { developer: 'DeepSeek AI', arch: 'MoE', params: '671B', active: '37B', context: '128K', license: 'DeepSeek License', released: 'Март 2025' },
+  },
+  {
+    id: 'llama3.3-70b', name: 'Llama 3.3 70B', modelType: 'internal', type: 'opensource',
+    overall: 68.3, partial: false, answered: 1377, total: 1377,
+    RC: 97.4, GC: 75.4, WS: 71.1, CL: 63.2, RI: 89.7, ED: 69.8,
+    info: { developer: 'Meta AI', arch: 'Dense', params: '70B', context: '128K', license: 'Llama 3.3 Community', released: 'Декабрь 2024' },
+  },
+  {
+    id: 'gpt-oss-120b', name: 'GPT-OSS 120B', modelType: 'internal', type: 'opensource',
+    overall: 68.0, partial: false, answered: 1377, total: 1377,
+    RC: 96.7, GC: 69.7, WS: 75.8, CL: 62.1, RI: 89.2, ED: 56.1,
+    info: { developer: 'Microsoft / OpenAI', arch: 'Dense', params: '120B', context: '128K', license: 'Open Source', released: '2025' },
+  },
+  {
+    id: 'gemma-3-27b', name: 'Gemma 3 27B', modelType: 'internal', type: 'opensource',
+    overall: 67.8, partial: false, answered: 1377, total: 1377,
+    RC: 97.4, GC: 74.4, WS: 75.8, CL: 57.9, RI: 90.8, ED: 59.3,
+    info: { developer: 'Google DeepMind', arch: 'Dense', params: '27B', context: '128K', license: 'Gemma License', released: 'Март 2025' },
+  },
+  {
+    id: 'qwen3-32b', name: 'Qwen3 32B', modelType: 'internal', type: 'opensource',
+    overall: 65.7, partial: false, answered: 1377, total: 1377,
+    RC: 97.4, GC: 81.5, WS: 80.5, CL: 57.9, RI: 88.1, ED: 42.9,
+    info: { developer: 'Alibaba DAMO', arch: 'Dense', params: '32B', context: '32K', license: 'Apache 2.0', released: 'Апрель 2025', note: 'Поддерживает режим thinking' },
+  },
+  {
+    id: 'ministral-14b', name: 'Ministral 14B', modelType: 'internal', type: 'opensource',
+    overall: 65.1, partial: false, answered: 1377, total: 1377,
+    RC: 98.0, GC: 70.3, WS: 73.7, CL: 65.3, RI: 84.3, ED: 59.8,
+    info: { developer: 'Mistral AI', arch: 'Dense', params: '14B', context: '128K', license: 'Mistral Research', released: 'Октябрь 2024' },
+  },
+  {
+    id: 'llama3.1-8b', name: 'Llama 3.1 8B', modelType: 'internal', type: 'opensource',
+    overall: 61.7, partial: false, answered: 1377, total: 1377,
+    RC: 94.7, GC: 65.6, WS: 70.0, CL: 44.2, RI: 80.5, ED: 58.2,
+    info: { developer: 'Meta AI', arch: 'Dense', params: '8B', context: '128K', license: 'Llama 3.1 Community', released: 'Июль 2024' },
+  },
   {
     id: 'tuzuk-gpt-oss-120b',
     name: 'Tuzuk GPT-OSS-120B',
@@ -26,12 +96,8 @@ const ULAB_RESULTS = [
     partial: false,
     answered: 1377,
     total: 1377,
-    RC: 96.7,
-    GC: 70.3,
-    WS: 77.4,
-    CL: 52.6,
-    RI: 86.0,
-    ED: 54.0,
+    RC: 96.7, GC: 70.3, WS: 77.4, CL: 52.6, RI: 86.0, ED: 54.0,
+    info: { developer: 'BalkomSoft (Tuzuk)', arch: 'Dense', params: '120B', context: '128K', license: 'Проприетарная', note: 'Размещена на инфраструктуре Baseten' },
   },
 ];
 
@@ -357,7 +423,88 @@ function renderRankingTable() {
       <td class="score-total">${fmt(m.overall)}</td>
       <td class="coverage-cell">${m.answered.toLocaleString('ru-RU')} / ${m.total.toLocaleString('ru-RU')}</td>
     `;
+    tr.style.cursor = 'pointer';
+    tr.title = 'Нажмите для подробной информации';
+    tr.addEventListener('click', () => showModelModal(m));
     tbody.appendChild(tr);
+  });
+}
+
+/* ============================================================ */
+/* MODEL INFO MODAL                                               */
+/* ============================================================ */
+function showModelModal(m) {
+  const info = m.info || {};
+  const TASKS = ['RC', 'GC', 'WS', 'CL', 'RI', 'ED'];
+  const TASK_LABELS_FULL = {
+    RC: 'Понимание текста', GC: 'Грамматика', WS: 'Выбор слова',
+    CL: 'Заполнение пропуска', RI: 'Определение стиля', ED: 'Поиск ошибки'
+  };
+  const rows = [
+    info.developer && ['Разработчик', info.developer],
+    info.arch      && ['Архитектура', info.arch],
+    info.params    && ['Параметры', info.active ? `${info.params} всего / ${info.active} активных` : info.params],
+    info.context   && ['Контекст', info.context + ' токенов'],
+    info.license   && ['Лицензия', info.license],
+    info.released  && ['Дата выпуска', info.released],
+  ].filter(Boolean);
+
+  const specsHtml = rows.map(([label, val]) => `
+    <div class="mi-row">
+      <span class="mi-label">${label}</span>
+      <span class="mi-value">${val}</span>
+    </div>`).join('');
+
+  const scoresHtml = TASKS.map(t => {
+    const score = m[t] || 0;
+    const { bg, text } = getHeatmapStyle(score);
+    return `
+      <div class="mi-score-item">
+        <div class="mi-score-bar-wrap">
+          <div class="mi-score-bar" style="width:${score}%;background:${bg}"></div>
+        </div>
+        <span class="mi-score-label">${TASK_LABELS_FULL[t]}</span>
+        <span class="mi-score-val" style="background:${bg};color:${text}">${score.toFixed(1)}%</span>
+      </div>`;
+  }).join('');
+
+  const isVendor = m.modelType === 'vendor';
+  const perfBadge = isVendor ? getVendorPerformanceBadge(m.overall) : null;
+
+  const modal = document.getElementById('modelInfoModal');
+  modal.querySelector('.mi-model-name').textContent = m.name;
+  modal.querySelector('.mi-developer').textContent = info.developer || '';
+  modal.querySelector('.mi-overall-score').textContent = fmt(m.overall);
+  modal.querySelector('.mi-badges').innerHTML = `
+    <span class="model-type-badge ${m.type === 'commercial' ? 'badge--commercial' : 'badge--opensource'}">
+      ${m.type === 'commercial' ? 'Commercial' : 'Open Source'}
+    </span>
+    ${isVendor ? `<span class="vendor-badge">Вендор</span>` : ''}
+    ${perfBadge ? `<span class="perf-badge ${perfBadge.cssClass}">${perfBadge.label}</span>` : ''}
+  `;
+  modal.querySelector('.mi-specs').innerHTML = specsHtml;
+  modal.querySelector('.mi-scores').innerHTML = scoresHtml;
+  modal.querySelector('.mi-note').textContent = info.note || '';
+  modal.querySelector('.mi-note').style.display = info.note ? 'block' : 'none';
+
+  modal.classList.add('mi-open');
+  document.body.style.overflow = 'hidden';
+}
+
+function initModelModal() {
+  const modal = document.getElementById('modelInfoModal');
+  if (!modal) return;
+  modal.addEventListener('click', e => {
+    if (e.target === modal || e.target.classList.contains('mi-close')) {
+      modal.classList.remove('mi-open');
+      document.body.style.overflow = '';
+    }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      modal.classList.remove('mi-open');
+      document.body.style.overflow = '';
+    }
   });
 }
 
@@ -803,6 +950,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDetailsToggle();
   renderRankingTable();
   initFilterButtons();
+  initModelModal();
   renderHeatmap();
   renderLeaderCards();
   renderVendorSection();
