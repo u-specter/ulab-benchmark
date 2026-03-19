@@ -144,6 +144,22 @@ const ULAB_RESULTS = [
       deploy: { vram: 'Управляется вендором', gpu: 'Управляется вендором (Baseten)', ram: 'Управляется вендором', disk: 'Управляется вендором', note_deploy: 'SaaS-решение — не требует собственного железа, деплой на стороне BalkomSoft' },
     },
   },
+  {
+    id: 'kotib-llm-v1',
+    name: 'Kotib LLM v1',
+    vendor: 'Kotib AI',
+    modelType: 'vendor',
+    type: 'opensource',
+    overall: 72.8,
+    partial: false,
+    answered: 1377,
+    total: 1377,
+    RC: 98.7, GC: 75.4, WS: 83.2, CL: 62.1, RI: 93.5, ED: 56.1,
+    info: {
+      developer: 'Kotib AI', arch: 'Dense', params: 'Не раскрыто', context: 'Не раскрыто', license: 'Проприетарная', note: 'Thinking-модель с поддержкой узбекского языка',
+      deploy: { vram: 'Управляется вендором', gpu: 'Управляется вендором', ram: 'Управляется вендором', disk: 'Управляется вендором', note_deploy: 'SaaS-решение — деплой и инфраструктура на стороне Kotib AI' },
+    },
+  },
 ];
 
 /* ============================================================ */
