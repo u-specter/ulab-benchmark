@@ -160,6 +160,23 @@ const ULAB_RESULTS = [
       deploy: { vram: 'Управляется вендором', gpu: 'Управляется вендором', ram: 'Управляется вендором', disk: 'Управляется вендором', note_deploy: 'SaaS-решение — деплой и инфраструктура на стороне Kotib AI' },
     },
   },
+  {
+    id: 'muxlisa-llm',
+    name: 'Muxlisa LLM',
+    vendor: 'Muxlisa AI',
+    modelType: 'vendor',
+    type: 'opensource',
+    overall: 68.6,
+    partial: false,
+    answered: 1377,
+    total: 1377,
+    RC: 96.0, GC: 76.4, WS: 82.1, CL: 58.9, RI: 82.7, ED: 56.6,
+    info: {
+      developer: 'Muxlisa AI', arch: 'Gemma-based', params: 'Не раскрыто', context: '~800 символов (обрезание)', license: 'Проприетарная',
+      note: 'Локальная модель на базе Gemma с поддержкой узбекского языка. Нестандартный API (не OpenAI-совместимый), ограниченный контекст.',
+      deploy: { vram: 'Управляется вендором', gpu: 'Управляется вендором (RunAI)', ram: 'Управляется вендором', disk: 'Управляется вендором', note_deploy: 'On-premise деплой на инфраструктуре RunAI (dc.uz) — национальный дата-центр Узбекистана' },
+    },
+  },
 ];
 
 /* ============================================================ */
